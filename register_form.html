@@ -9,23 +9,26 @@
     </head>
 
     <body>
-        <h1 align="center"> New User </h1>
-        <div>         
-
-            <form action="login_verify.php" method="POST" >
+        <div>
+            <h1 align="center"> Housing Complex Registration</h1>
+            <form action="register_verify.php" method="POST" >
                 <ul style="list-style-type: none">
                     <li>
                         <input type="text" name="complex_name"  placeholder="Complex Name" />
+                        <input type="text" name="password" placeholder="password"/>
+
+                    </li>
+                    <li>
                         <input type="email" name="complex_email" placeholder="Email" />  
-                    </li>
-                    <li>
                         <input type="text" name="phone_number" placeholder="Phone number" />
-                        <input type="text" name="street_address" placeholder="Street address" />
+
                     </li>
                     <li>
+                        <input type="text" name="street_address" placeholder="Street address" />
                         <input type="text" name="complex_city" placeholder="City" />
                         <input type="text" name="complex_zip" placeholder="zip code" />
                     </li>
+
                     <li>
                         <input type="submit" value="Register"/>
                     </li>
