@@ -36,9 +36,9 @@
             die("Connection failed: " . $conn->connect_error);
         }
 // Insert new Complex information into table.
-        $sql = "INSERT INTO User (id,COMPLEX_NAME, COMPLEX_EMAIL, PHONE_NUMBER,
+        $sql = "INSERT INTO User (ID, COMPLEX_NAME, COMPLEX_EMAIL, PHONE_NUMBER,
                 STREET_ADDRESS, CITY, ZIP, DESCRIPTION, PASSWORD)
-                VALUES ('1', '$complex_name', '$complex_email', '$phone_number', '$street_address',"
+                VALUES (DEFAULT, '$complex_name', '$complex_email', '$phone_number', '$street_address',"
                 . "'$complex_city', '$complex_zip', 'Default Description', '$complex_password')";
 
         if ($conn->query($sql) === TRUE) {
