@@ -6,28 +6,76 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Whoot Whoot</title>
+        <title>Housing4HealthTC</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="Style3.css">
+        <link rel="stylesheet" type="text/css" href="Style3.css" media = "screen">
     </head>
     <body>
-        <ul>
-            <li><a class="active" href="#home">Home</a></li>
-            <li><a href="#news">Search</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropbtn">Extras</a>
-                <div class="dropdown-content">
-                    <a href="#">What is Sub housing?</a>
-                    <a href="#">Housing Services</a>
-                    <a href="#">Something Else really important</a>
+        <div id ="wrapper">
+            <div id="logo-wrap">
+                <img id = logoImg src ="./img/Header.png" alt ="theimage">
+            </div>
 
+            <div id="menu_wrap">
+                <nav>
+                    <ul class="menu">
+                        <li><a class="active" href="#home">Home</a></li>
+                        <li><a href="#news">Affordable Housing Search</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropbtn">Tenant Resources</a>
+                            <div class="dropdown-content">
+                                <a href="#">What is Sub housing?</a>
+                                <a href="#">Housing Services</a>
+                                <a href="#">Something Else really important</a>
+
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropbtn">Landlord Resources</a>
+                            <div class="dropdown-content">
+                                <a href="#">What is Sub housing?</a>
+                                <a href="#">Why affordable housing?</a>
+                                <a href="#">Landlord Liason Program</a>
+                            </div>
+                        </li>
+
+                        <li><a class ="login" href="user_login.html">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div id = "content">
+                <h2> Hot Rental </h2>
+                <img src ="./img/SalmonRun.jpg" alt ="Will Query">
+                <p> Make Salmon Run your new home! Salmon Run is a beautiful, BRAND NEW apartment community located just one block off 
+                    Yelm Avenue, behind the Safeway Shopping center. As our resident, you will enjoy living just minutes away from 
+                    neighborhood attractions like local schools, restaurants, the cinema, Walmart, city parks, public transportation and 
+                    the local library! 
+                
+                Did we do it???</div>
+
+            <div id="footer">
+                <div class="left_footer">
+                    <ul class="footer_list">
+                        <li>Housing Services</li>
+                        <li>Affordable Housing Search</li>
+                        <li>Housing Search</li>
+                    </ul>
                 </div>
-            </li>
-
-            <li><a href="user_login.html">Login</a></li>
-            <li><a href="register_form.html">Register</a></li>
-        </ul>
-        <div>Did we do it???</div>
+                <div class="right_footer">
+                    <ul class="footer_list">
+                        <li>Why Affordable Housing?</li>
+                        <li>Landlord Liason Program</li>
+                        <li>Community Resources</li>
+                    </ul>
+                </div>
+                <ul class="footer_list">
+                    <li>What is Sub Housing</li>
+                    <li>Copyright</li>
+                    <li>Sitemap</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+        </div>
     </body>
 </html>
