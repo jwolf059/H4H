@@ -18,8 +18,9 @@
 
 
     $complex_name = mysql_real_escape_string(filter_input(INPUT_POST, "complex_name"));
-    $complex_email = mysql_real_escape_string(filter_input(INPUT_POST, "complex_email", FILTER_VALIDATE_EMAIL));
-    $phone_number = mysql_real_escape_string(filter_input(INPUT_POST, "phone_number", FILTER_SANITIZE_SPECIAL_CHARS));
+    $complex_email = mysql_real_escape_string(filter_input(INPUT_POST, "complex_email",
+            FILTER_VALIDATE_EMAIL));
+    $phone_number = mysql_real_escape_string(filter_input(INPUT_POST, "phone_number"));
     $street_address = mysql_real_escape_string(filter_input(INPUT_POST, "street_address"));
     $complex_city = mysql_real_escape_string(filter_input(INPUT_POST, "complex_city"));
     $complex_zip = mysql_real_escape_string(filter_input(INPUT_POST, "complex_zip"));
