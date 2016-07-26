@@ -15,19 +15,34 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     
-    
-    
-    
-    
     <body>
 
+        <div>
+
+            <h1 align="center"> Affordable Housing Login </h1>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                <ul class="searchbar_allign">
+                    <li>
+                        <input type="text" name="login_field"  placeholder="Complex Email" />
+                        <input type="text" name="password_field"  placeholder="Password" />
+                        <input type="submit" value="Login" />
+
+                    </li>
+
+                </ul>
+
+            </form>
+
+        </div>
+
         <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "mydb";
         // Only connects to server after POST method has been sent.
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            
+                    $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $database = "mydb";
 
             $login_email = filter_input(INPUT_POST, $_POST["login_field"]);
             $login_password = filter_input(INPUT_POST, $_POST["password_field"]);
@@ -55,27 +70,8 @@ and open the template in the editor.
             }
         }
         ?>
-
-
-        <div>
-
-            <h1 align="center"> Affordable Housing Login </h1>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-            <ul class="searchbar_allign">
-                <li>
-                    <input type="text" name="login_field"  placeholder="Complex Email" />
-                    <input type="text" name="password_field"  placeholder="Password" />
-                    <input type="submit" value="Login" />
-
-                </li>
-       
-            </ul>
-            
-        </form>
-            
-        </div>
     </body>
-   
+
     
     
 </html>
