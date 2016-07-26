@@ -5,6 +5,7 @@
 
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="Style3.css" media = "screen">
         <title></title>
     </head>
 
