@@ -1,5 +1,4 @@
 
-
 #logo-wrap img {
     display: block;
     max-width: 100%;
@@ -135,6 +134,11 @@ body {
   
 }
 
+h1 {
+    text-align: center;
+    margin: 0;
+}
+
 h2 {
     font-size: 45px;
     text-align: center;
@@ -148,4 +152,28 @@ h3 {
     text-align: left;    
     margin-left: 5%;
     margin-bottom: 0;
+}
+
+
+.form-control{
+  display: block;
+  text-align: center;
+  width: 50%; /* THIS */
+  height: auto;
+  padding: 6px 12px;
+  font-size: 18px;
+  line-height: 1.42857143;
+  color: #333; /* THIS */
+  background-color: #ccc;
+  background-image: none;
+  border: 8px solid #333; /* THIS */
+  border-radius: 4px; /* THIS */
+}
+
+.form_box {
+    margin-left: 40%;
+    margin-right: 20%;
+    margin-bottom: 4%;
+    margin-top: 4%;
+    border-color: black;
 }
