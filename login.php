@@ -5,73 +5,61 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
+<HTML>
+    <HEAD>
+        <TITLE></TITLE>
 
-<html>
-    
-    
-    <head>
-        <title>Housing4Health Login</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    
-    <body>
+    </HEAD>
 
-        <div>
+    <?php
+// Only connects to server after POST method has been sent.
 
-            <h1 align="center"> Affordable Housing Login </h1>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                <ul class="searchbar_allign">
-                    <li>
-                        <input type="text" name="login_field"  placeholder="Complex Email" />
-                        <input type="text" name="password_field"  placeholder="Password" />
-                        <input type="submit" value="Login" />
-
-                    </li>
-
-                </ul>
-
-            </form>
-
-        </div>
-
-        <?php
-        // Only connects to server after POST method has been sent.
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            
-                    $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "mydb";
-
-            $login_email = filter_input(INPUT_POST, $_POST["login_field"]);
-            $login_password = filter_input(INPUT_POST, $_POST["password_field"]);
+    if (isset($_POST['submit'])) {
 
 
-            if (isset($login_email) and isset($login_password)) {
-                $conn = new mysqli($servername, $username, $password, $database);
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "mydb";
 
-                if ($conn->connect_error) {
-                    die("Connection Failed: " . $conn->connect_error);
-                }
+        //$login_email = mysql_real_escape_string(filter_input(INPUT_POST, $_POST["login_field"]));
+        //$login_password = mysql_real_escape_string(filter_input(INPUT_POST, $_POST["password_field"]));
+        $login_email = $_POST['login_field'];
+        $login_password = $_POST['password_field'];
 
-                $sql = "SELECT * FROM User"
-                        . "WHERE COMPLEX_EMAIL = $login_email"
-                        . "AND PASSWORD = $login_password";
+        $conn = mysql_connect($servername, $username, $password);
 
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                    echo "Login record Found";
-                } else {
-                    echo "Login record not Found!";
-                }
-                $conn->close();
-            }
+        if (!$conn) {
+            die("Connection Failed: " . mysql_error());
         }
-        ?>
-    </body>
 
-    
-    
-</html>
+        if (!mysql_select_db($database)) {
+            die('Could not select database: ' . mysql_error());
+        }
+
+        // $sql = "SELECT * FROM User WHERE COMPLEX_EMAIL = \"StoneBridge@gmail.com\" AND PASSWORD = \"secret\"";
+        $sql = Sprintf("SELECT * FROM User WHERE COMPLEX_EMAIL = '%s' AND PASSWORD = '%s'",
+                mysql_real_escape_string($login_email), mysql_real_escape_string($login_password));
+        $result = mysql_query($sql);
+
+        if (!$result) {
+            die('Could not query:' . mysql_error());
+        }
+        /*while ($row = mysql_fetch_assoc($result)) {
+            echo $row['COMPLEX_NAME'];
+            echo $row['PASSWORD'];
+        }*/
+
+         if (!mysql_num_rows($result) == 0) {
+
+          header("Location: AnotherPage.html");
+          exit;
+          } else {
+          echo "Login record not Found!";
+          } 
+        mysql_close($conn);
+    }
+    ?>
+
+
+</HTML>
