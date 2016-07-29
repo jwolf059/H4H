@@ -57,9 +57,8 @@ and open the template in the editor.
                         <input type="text" name="login_field"  placeholder="Complex Email" />
                         <input type="text" name="password_field"  placeholder="Password" />
                         <input type="submit" name ="submit" value="Login" />
-                        <input href="register_form.html" type = "button" value="Register"/>
-
-                        <?php include 'login.php'; ?>
+                        <p>or</p>
+                        <a href="register_form.html" type = "button"/>Register</a>
                     </form>
                 </div>
             </div>
