@@ -1,9 +1,13 @@
+<?php
+include('login.php');
+if(isset($_SESSION['login_user'])) {
+    header("location: LandlordPage.php");
+    
+}
+?>
+
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <title>Housing4Health Login</title>
@@ -51,15 +55,14 @@ and open the template in the editor.
             <div class ="content">
                 <div class ="form_box">
                     
-                    <form class="form-control" action="login.php" method="POST">
+                    <form class="form-control" action="" method="POST">
                         <h4>Welcome to the Housing4Health Login Page</h4>
                         <p>Please enter your Email and Password or click register below to create an account.</p>
                         <input type="text" name="login_field"  placeholder="Complex Email" />
                         <input type="text" name="password_field"  placeholder="Password" />
                         <input type="submit" name ="submit" value="Login" />
-                        <input href="register_form.html" type = "button" value="Register"/>
-
-                        <?php include 'login.php'; ?>
+                        <span><?php echo $error_message; ?></span>
+     
                     </form>
                 </div>
             </div>
