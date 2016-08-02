@@ -44,7 +44,7 @@
                 . "'$complex_city', '$complex_zip', 'Default Description', '$complex_password')";
 
         if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
+            header("location: LoginPage.php");
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
