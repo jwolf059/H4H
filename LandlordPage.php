@@ -1,14 +1,11 @@
 
 <?php
 include('LandlordSession.php');
+$unit_query_string = sprintf("SELECT * FROM UNIT WHERE COMPLEX_NAME='%s';", $current_complex);
+//$string = "SELECT * FROM UNIT WHERE COMPLEX_NAME= 'Salmon Run';";
+        
+$result_for_units = mysqli_query($conn, $unit_query_string);
 
-$unit_query_string = sprintf("SELECT * FROM UNIT where COMPLEX_NAME='%s'", $current_complex);
-$query_for_units = mysqli_query($conn, $unit_query_string);
-
-$allRows = array();
-while ($row = mysqli_fetch_array($query_for_units, MYSQLI_NUM)) {
-    $allRows[] = $row;
-}
 ?>
 <!DOCTYPE html>
 <!--
@@ -71,15 +68,16 @@ Use the php tags and an echo call before hand to access the variables.
 
                     <table width="100%" border="0" cellspacing="0" cellpadding="15">
                         <?php
-                        foreach ($allRows as $row) {
-                            ?>
-                            <tr>
-                                <td width="19%" valign="top"><?php echo $row['Num_Bed']; ?>" width="142" height="188" alt="<?php echo $row['PRICE']; ?>" /><br />
-                                    etc.
-                            </tr>
-                            <?php
+                        if ($result_for_units) {
+                            
+                            while ($current_unit = mysqli_fetch_assoc($result_for_units)){
+                            
+                            echo $current_unit["NUM_BED"];
+                            }
                         }
-                        ?>
+                   
+                            ?>
+
                     </table>
                 </div>
 

@@ -13,7 +13,7 @@ session_start();
 
 $user_validation = $_SESSION['login_user'];
 
-$query_string = sprintf("SELECT * FROM USER where COMPLEX_EMAIL='%s'", $user_validation);
+$query_string = sprintf("SELECT * FROM USER where COMPLEX_EMAIL='%s';", $user_validation);
 $query_for_login = mysqli_query($conn, $query_string);
 
 $row = mysqli_fetch_assoc($query_for_login);
