@@ -1,22 +1,29 @@
+
 <?php
-include('login.php');
-if(isset($_SESSION['login_user'])) {
-    header("location: LandlordPage.php");
-    
-}
+include('LandlordSession.php');
+
+//$unit_query_string = sprintf("SELECT * FROM USER where COMPLEX_EMAIL='%s'", $user_validation);
+//$query_for_units = mysqli_query($conn, $unit_query_string);
 ?>
-
 <!DOCTYPE html>
+<!--
+Accessing the current logged in user variables:
+current_complex
+current_email
+current_phone
+current_street
+current_zip
+current_city
+current_description
 
+Use the php tags and an echo call before hand to access the variables.
+-->
 <html>
     <head>
-        <title>Housing4Health Login</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="Style3.css" media = "screen">
-
-    </head>
-    <body>        
+        <title></title>
+    </head> 
+    <body>
         <div id ="wrapper">
             <div id="logo-wrap">
                 <img id = logoImg src ="./img/Header.png" alt ="theimage">
@@ -45,32 +52,19 @@ if(isset($_SESSION['login_user'])) {
                             </div>
                         </li>
 
-                        <li><a class ="login" href="user_login.html">Login</a></li>
+                        <li><a class ="login" href="LoginPage.php">Login</a></li>
                     </ul>
                 </nav>
             </div>
-            
-            
-            
-            <div class ="content">
-                <div class ="form_box">
-                    
-                    <form class="form-control" action="" method="POST">
-                        <h4>Welcome to the Housing4Health Login Page</h4>
-                        <p>Please enter your Email and Password or click register below to create an account.</p>
-                        <input type="text" name="login_field"  placeholder="Complex Email" />
-                        <input type="text" name="password_field"  placeholder="Password" />
-                        <input type="submit" name ="submit" value="Login" />
-                        <span><?php echo $error_message; ?></span>
-     
-                    </form>
+
+            <div id = "content">
+                <div id="profile">
+                    <b id="welcome">Welcome : <i><?php echo $current_complex; ?></i></b>
+                    <b id="logout"><a href="LandlordLogout.php">Log Out</a></b>
+
                 </div>
             </div>
-            
-            
-            
-            
-            
+
             <div id="footer">
                 <div class="left_footer">
                     <ul class="footer_list">
