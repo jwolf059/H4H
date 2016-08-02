@@ -2,6 +2,10 @@
 <?php
 include('LandlordSession.php');
 
+$allRows = array();
+while ($row = mysql_fetch_array($sql)) {
+    $allRows[] = $row;
+}
 //$unit_query_string = sprintf("SELECT * FROM USER where COMPLEX_EMAIL='%s'", $user_validation);
 //$query_for_units = mysqli_query($conn, $unit_query_string);
 ?>
@@ -21,7 +25,9 @@ Use the php tags and an echo call before hand to access the variables.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="Style3.css" media = "screen">
+        <title>Housing4Health</title>
     </head> 
     <body>
         <div id ="wrapper">
@@ -52,7 +58,7 @@ Use the php tags and an echo call before hand to access the variables.
                             </div>
                         </li>
 
-                        <li><a class ="login" href="LoginPage.php">Login</a></li>
+                        <li><a class ="login" href="LandlordLogout.php">Logout</a></li>
                     </ul>
                 </nav>
             </div>
@@ -60,32 +66,45 @@ Use the php tags and an echo call before hand to access the variables.
             <div id = "content">
                 <div id="profile">
                     <b id="welcome">Welcome : <i><?php echo $current_complex; ?></i></b>
-                    <b id="logout"><a href="LandlordLogout.php">Log Out</a></b>
 
+                    <table width="100%" border="0" cellspacing="0" cellpadding="15">
+                        <?php
+                        foreach ($allRows as $row) {
+                            ?>
+                            <tr>
+                                <td width="19%" valign="top"><?php echo $row['Num_Bed']; ?>" width="142" height="188" alt="<?php echo $row['PRICE']; ?>" /><br />
+                                    etc.
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                    </table>
                 </div>
-            </div>
 
-            <div id="footer">
-                <div class="left_footer">
-                    <ul class="footer_list">
-                        <li><a href="./HousingResources.html">Housing Services</a></li>
-                        <li><a href="./HousingSearch.html">Affordable Housing Search</a></li>
-                    </ul>
-                </div>
-                <div class="right_footer">
-                    <ul class="footer_list">
-                        <li><a href="./WhyAffordableHousing.html">Why Affordable Housing?</a></li>
-                        <li><a href="LandlordLiasonProgram.html">Landlord Liason Program</a></li>
-                        <li><a href="OtherCommunityResources"> Community Resources</a></li>
-                    </ul>
-                </div>
-                <ul class="footer_list">
-                    <li><a href="AffordableHousing.html">What is Sub Housing</a></li>
-                    <li><a href="copyrightpage.html">Copyright</a></li>
-                    <li><a href = "sitemap.html">Sitemap</a></li>
-                    <li><a href="Contact.html">Contact</a></li>
-                </ul>
             </div>
         </div>
-    </body>
+
+        <div id="footer">
+            <div class="left_footer">
+                <ul class="footer_list">
+                    <li><a href="./HousingResources.html">Housing Services</a></li>
+                    <li><a href="./HousingSearch.html">Affordable Housing Search</a></li>
+                </ul>
+            </div>
+            <div class="right_footer">
+                <ul class="footer_list">
+                    <li><a href="./WhyAffordableHousing.html">Why Affordable Housing?</a></li>
+                    <li><a href="LandlordLiasonProgram.html">Landlord Liason Program</a></li>
+                    <li><a href="OtherCommunityResources"> Community Resources</a></li>
+                </ul>
+            </div>
+            <ul class="footer_list">
+                <li><a href="AffordableHousing.html">What is Sub Housing</a></li>
+                <li><a href="copyrightpage.html">Copyright</a></li>
+                <li><a href = "sitemap.html">Sitemap</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
 </html>
