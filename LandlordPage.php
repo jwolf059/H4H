@@ -101,17 +101,19 @@ Use the php tags and an echo call before hand to access the variables.
                         ?>
 
                     </table>
-                    <input type="submit" name ="submit" value="Add a Unit" />
-                    
+                    <form action="LandlordNewUnit.php">
+                        <input type="submit" value="Add New Unit" />
+                    </form>
+
                     <div class ="account_info">
-                    <h4>Account Information</h4>
-                    Complex Email: <?php echo $current_email; ?> <br>
-                    Phone Number: <?php echo $current_phone; ?> <br>
-                    Address: <?php echo $current_street; ?> <br>
-                    City: <?php echo $current_city; ?> <br>
-                    Zip: <?php echo $current_zip; ?> <br>
-                    Complex Description: <?php echo $current_description; ?> <br>
-                     <input type="submit" name ="submit" value="Edit Account Information" />
+                        <h4>Account Information</h4>
+                        Complex Email: <?php echo $current_email; ?> <br>
+                        Phone Number: <?php echo $current_phone; ?> <br>
+                        Address: <?php echo $current_street; ?> <br>
+                        City: <?php echo $current_city; ?> <br>
+                        Zip: <?php echo $current_zip; ?> <br>
+                        Complex Description: <?php echo $current_description; ?> <br>
+                        <input type="submit" name ="submit" value="Edit Account Information" />
                     </div>
                 </div>
             </div>
