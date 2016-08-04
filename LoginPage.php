@@ -59,7 +59,7 @@ if(isset($_SESSION['login_user'])) {
                         <h4>Welcome to the Housing4Health Login Page</h4>
                         <p>Please enter your Email and Password or click register below to create an account.</p>
                         <input type="text" name="login_field"  placeholder="Complex Email" />
-                        <input type="text" name="password_field"  placeholder="Password" />
+                        <input type="password" name="password_field"  placeholder="Password" />
                         <input type="submit" name ="submit" value="Login" />
                         <span><?php echo $error_message; ?></span>
      
