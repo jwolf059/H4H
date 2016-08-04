@@ -1,7 +1,9 @@
+
 <?php
 include('LandlordSession.php');
 $unit_query_string = sprintf("SELECT * FROM UNIT WHERE COMPLEX_NAME='%s';", $current_complex);
 //$string = "SELECT * FROM UNIT WHERE COMPLEX_NAME= 'Salmon Run';";
+
 $result_for_units = mysqli_query($conn, $unit_query_string);
 ?>
 <!DOCTYPE html>
@@ -14,6 +16,7 @@ current_street
 current_zip
 current_city
 current_description
+
 Use the php tags and an echo call before hand to access the variables.
 -->
 <html>
@@ -63,6 +66,7 @@ Use the php tags and an echo call before hand to access the variables.
                     <b id="welcome">Welcome : <i><?php echo $current_complex; ?></i></b>
 
                     <table width="100%" border="0" cellspacing="0" cellpadding="15">
+                        <caption>Current Units</caption>
                         <tr>
                             <th>Number of Beds</th>
                             <th>Number of Baths</th>
@@ -77,6 +81,7 @@ Use the php tags and an echo call before hand to access the variables.
 
                         <?php
                         if ($result_for_units) {
+
                             while ($current_unit = mysqli_fetch_assoc($result_for_units)) {
                                 ?>
                                 <tr>
@@ -96,8 +101,18 @@ Use the php tags and an echo call before hand to access the variables.
                         ?>
 
                     </table>
-                    <h4>Account Informatica</h4>
+                    <input type="submit" name ="submit" value="Add a Unit" />
                     
+                    <div class ="account_info">
+                    <h4>Account Information</h4>
+                    Complex Email: <?php echo $current_email; ?> <br>
+                    Phone Number: <?php echo $current_phone; ?> <br>
+                    Address: <?php echo $current_street; ?> <br>
+                    City: <?php echo $current_city; ?> <br>
+                    Zip: <?php echo $current_zip; ?> <br>
+                    Complex Description: <?php echo $current_description; ?> <br>
+                     <input type="submit" name ="submit" value="Edit Account Information" />
+                    </div>
                 </div>
             </div>
 

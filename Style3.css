@@ -177,3 +177,22 @@ h3 {
     margin-top: 4%;
     border-color: black;
 }
+
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    
+}
+
+table tr:nth-child(even) {
+    background-color: #ccc;
+}
+
+table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+account_info {
+    border: 3px solid black;
+}
