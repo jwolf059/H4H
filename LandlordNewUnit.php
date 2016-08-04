@@ -1,28 +1,13 @@
-<?php
-include('LandlordSession.php');
-$unit_query_string = sprintf("SELECT * FROM UNIT WHERE COMPLEX_NAME='%s';", $current_complex);
-//$string = "SELECT * FROM UNIT WHERE COMPLEX_NAME= 'Salmon Run';";
-$result_for_units = mysqli_query($conn, $unit_query_string);
-?>
 <!DOCTYPE html>
-<!--
-Accessing the current logged in user variables:
-current_complex
-current_email
-current_phone
-current_street
-current_zip
-current_city
-current_description
-Use the php tags and an echo call before hand to access the variables.
--->
 <html>
+
     <head>
+        <title>Affordable Housing New Unit</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="Style3.css">
         <link rel="stylesheet" type="text/css" href="Style3.css" media = "screen">
-        <title>Housing4Health</title>
-    </head> 
+    </head>
 
     <body>
         <div id ="wrapper">
@@ -57,51 +42,36 @@ Use the php tags and an echo call before hand to access the variables.
                     </ul>
                 </nav>
             </div>
+        </div>
+        <div id = "content">
+            <div>         
+                <h1 align="center"> Housing4Health New Unit </h1>
+                <form action="NewUnitVerify.php" method="POST" >
+                    <ul style="list-style-type: none">
+                        <li>
+                            <input type="text" name="bed_count"  placeholder="No. of Beds" />
+                            <input type="text" name="bath_count" placeholder="No. of Bath" />  
+                        </li>
+                        <li>
+                            <input type="text" name="sq_feet" placeholder="Sq. Feet" />
+                            <input type="text" name="price" placeholder="Price" />
+                        </li>
+                        <li>
+                            <input type="text" name="deposit" placeholder="Deposit Amount" />
+                            <input type="text" name="app_fee" placeholder="App Fee" />
+                        </li>
+                        <li>
+                            
+                        </li>
+                        <li>
+                            <input type="submit" value="Submit"/>
+                        </li>
 
-            <div id = "content">
-                <div id="profile">
-                    <b id="welcome">Welcome : <i><?php echo $current_complex; ?></i></b>
+                    </ul>
 
-                    <table width="100%" border="0" cellspacing="0" cellpadding="15">
-                        <tr>
-                            <th>Number of Beds</th>
-                            <th>Number of Baths</th>
-                            <th>Sq ft</th>
-                            <th>Rental Price</th>
-                            <th>Date Avaliable</th>
-                            <th>Lease Length</th>
-                            <th>Deposit</th>
-                            <th>Edit Unit</th>
-                        </tr>
-
-
-                        <?php
-                        if ($result_for_units) {
-                            while ($current_unit = mysqli_fetch_assoc($result_for_units)) {
-                                ?>
-                                <tr>
-                                    <td> <?php echo $current_unit["NUM_BED"]; ?> </td>
-                                    <td> <?php echo $current_unit["NUM_BATH"]; ?> </td>
-                                    <td> <?php echo $current_unit["SQ_FT"]; ?> </td>
-                                    <td> <?php echo $current_unit["PRICE"]; ?> </td>
-                                    <td> <?php echo $current_unit["DATE_AVL"]; ?> </td>
-                                    <td> <?php echo $current_unit["LEASE_TYPE"]; ?> </td>
-                                    <td> <?php echo $current_unit["DEPOSITE"]; ?> </td>
-                                    <td> Add Link </td>
-                                </tr>
-
-                                <?php
-                            }
-                        }
-                        ?>
-
-                    </table>
-                    <h4>Account Informatica</h4>
-                    
-                </div>
-            </div>
-
-            <div id="footer">
+                </form></div>
+        </div>
+                        <div id="footer">
                 <div class="left_footer">
                     <ul class="footer_list">
                         <li><a href="./HousingResources.html">Housing Services</a></li>
@@ -122,6 +92,5 @@ Use the php tags and an echo call before hand to access the variables.
                     <li><a href="Contact.html">Contact</a></li>
                 </ul>
             </div>
-        </div>
     </body>
 </html>
