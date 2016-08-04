@@ -1,3 +1,7 @@
+
+<?php 
+include('LandlordSession.php');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -55,21 +59,35 @@
                         <li>
                             <input type="text" name="sq_feet" placeholder="Sq. Feet" />
                             <input type="text" name="price" placeholder="Price" />
+                            <input type="date" name="date_available" />
+                            <input type="text" name="lease_length" placeholder="Lease Length" />
                         </li>
                         <li>
                             <input type="text" name="deposit" placeholder="Deposit Amount" />
                             <input type="text" name="app_fee" placeholder="App Fee" />
+                            Pets Allowed: <input type="checkbox" name="pet_allowed"  />
+                            
                         </li>
                         <li>
+                            <input type="text" name="pet_req" placeholder="Pet Requirments"/>
+                            Laundry: <input type="checkbox" name="laundry"  />
+                            Section 8: <input type="checkbox" name="sec_8"  />
+                            HUD Voucher: <input type="checkbox" name="hud_vocher"  />
+                            USDA <input type="checkbox" name="usda"  />
+                            Low Income: <input type="checkbox" name="pet_allowed"  />
+                                   
+                            
                             
                         </li>
                         <li>
                             <input type="submit" value="Submit"/>
+                            
                         </li>
 
                     </ul>
 
                 </form></div>
+           
         </div>
                         <div id="footer">
                 <div class="left_footer">
