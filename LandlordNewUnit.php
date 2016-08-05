@@ -1,6 +1,7 @@
 
 <?php 
 include('LandlordSession.php');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,6 +54,7 @@ include('LandlordSession.php');
                 <form action="NewUnitVerify.php" method="POST" >
                     <ul style="list-style-type: none">
                         <li>
+                            <input type="text" name="unit_id" placeholder="Unit number" />
                             <input type="text" name="bed_count"  placeholder="No. of Beds" />
                             <input type="text" name="bath_count" placeholder="No. of Bath" />  
                         </li>
@@ -60,27 +62,29 @@ include('LandlordSession.php');
                             <input type="text" name="sq_feet" placeholder="Sq. Feet" />
                             <input type="text" name="price" placeholder="Price" />
                             <input type="date" name="date_available" />
+      
                             <input type="text" name="lease_length" placeholder="Lease Length" />
                         </li>
                         <li>
                             <input type="text" name="deposit" placeholder="Deposit Amount" />
                             <input type="text" name="app_fee" placeholder="App Fee" />
-                            Pets Allowed: <input type="checkbox" name="pet_allowed"  />
+                            Pets Allowed: <input type="checkbox" name="pet_allowed"  value="0"/>
                             
                         </li>
                         <li>
                             <input type="text" name="pet_req" placeholder="Pet Requirments"/>
-                            Laundry: <input type="checkbox" name="laundry"  />
-                            Section 8: <input type="checkbox" name="sec_8"  />
-                            HUD Voucher: <input type="checkbox" name="hud_vocher"  />
-                            USDA <input type="checkbox" name="usda"  />
-                            Low Income: <input type="checkbox" name="pet_allowed"  />
+                            Laundry: <input type="checkbox" name="laundry"  value="0"/>
+                            Section 8: <input type="checkbox" name="sec_8"  value="0"/>
+                            HUD Voucher: <input type="checkbox" name="hud_voucher"  value="0"/>
+                            USDA <input type="checkbox" name="usda"  value="0"/>
+                            Low Income: <input type="checkbox" name="low_income"  value="0"/>
                                    
                             
                             
                         </li>
                         <li>
-                            <input type="submit" value="Submit"/>
+                            
+                            <input type="submit" name="submit" value="Submit"/>
                             
                         </li>
 

@@ -2,59 +2,102 @@
 <!DOCTYPE html>
 
 <html>
-
     <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="Style3.css" media = "screen">
         <title></title>
     </head>
+<?php
 
-    <?php
+session_start();
+$error_message = '';
+
+/*if (isset($_POST['submit']) && (empty($_POST['bed_count']) || empty($_POST['bath_count']) ||
+        empty($_POST['sq_feet']) || empty($_POST['price']) ||
+        empty($_POST['date_available']) || empty($_POST['lease_Length']) ||
+        empty($_POST['deposit']) || empty($_POST['app_fee']))) {
+
+    $error_message = "All text fields required.";
+}
+ */
+
+echo "bam first";
+ if (isset($_POST['submit'])) {
+
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "mydb";
+    $database = "mydb";
 
 
 
-    if (isset($complex_name) and isset($complex_email) and
-            isset($phone_number) and isset($street_address) and
-            isset($complex_city) and isset($complex_zip)) {
+    $conn = mysqli_connect($servername, $username, $password);
 
-// Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        function checkInput($input) {
-            $input = stripcslashes($input);
-            $input = mysqli_real_escape_string($conn, $input);
-            return $input;
-        }
-
-        $unit_beds = checkInput($_POST['bed_count']);
-        $unit_bath = checkInput($_POST['bath_count']);
-        $unit_size = checkInput($_POST['sq_feet']);
-        $unit_deposit = checkInput($_POST['deposit']);
-        $unit_free = checkInput($_POST['app_fee']);
-// Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-// Insert new Complex information into table.
-        $sql = "INSERT INTO UNIT (ID, COMPLEX_NAME, COMPLEX_EMAIL, PHONE_NUMBER,
-                STREET_ADDRESS, CITY, ZIP, DESCRIPTION, PASSWORD)
-                VALUES (DEFAULT, '$complex_name', '$complex_email', '$phone_number', '$street_address',"
-                . "'$complex_city', '$complex_zip', 'Default Description', '$complex_password')";
-
-        if ($conn->query($sql) === TRUE) {
-            header("location: LoginPage.php");
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-
-        $conn->close();
+    // If the connection fails, give error.
+    if (!$conn) {
+        die("Connection Failed: " . mysqli_error());
     }
-    ?>
 
+    echo "bam connected";
+    function checkInput($input, $conn) {
+        $input = stripcslashes($input);
+        $input = mysqli_real_escape_string($conn, $input);
+        return $input;
+    }
+    
+    function checkCheckbox($box) {
+        $result = false;
+        if (isset($box)) {
+            $result = true;
+        }
+        return $result;
+    }
+
+    $unit_pet_req = '';
+    $unit_complex = $_SESSION['complex_name'];
+    $unit_id = checkInput($_POST['unit_id'], $conn);
+    $unit_bed_count = checkInput($_POST['bed_count'], $conn);
+    $unit_bath_count = checkInput($_POST['bath_count'], $conn);
+    $unit_size = checkInput($_POST['sq_feet'], $conn);
+    $unit_price = checkInput($_POST['price'], $conn);
+    $unit_date_available = checkInput($_POST['date_available'], $conn);
+    $unit_lease_length = checkInput($_POST['lease_length'], $conn);
+    $unit_deposit = checkInput($_POST['deposit'], $conn);
+    $unit_app_fee = checkInput($_POST['app_fee'], $conn);
+    $unit_pet_req = checkInput($_POST['pet_req'], $conn);
+    
+    $unit_pet_allowed = checkCheckbox($_POST['pet_allowed']);
+    $unit_laundry = checkCheckbox($_POST['laundry']);
+    $unit_sec_8 = checkCheckbox($_POST['sec_8']);
+    $unit_hud_voucher = checkCheckbox($_POST['hud_voucher']);
+    $unit_usda = checkCheckbox($_POST['usda']);
+    $unit_low_income = checkCheckbox($_POST['low_income']);
+
+
+    echo "bam checked";
+
+
+
+    $selected_db = mysqli_select_db($conn, $database);
+
+    echo "bam selected";
+    $query_string = sprintf("INSERT INTO UNIT (idUNIT, COMPLEX_NAME, NUM_BED, NUM_BATH,
+                SQ_FEET, PRICE, DATE_AVL, LEASE_TYPE, DEPOSITE, APP_FEE, PET_ALLOWED,
+                PET_REQ, LAUNDRY, SEC_8, HUD_VOCH, USDA, LOW_INCOME) 
+                VALUES (DEFAULT, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                %s, %s, %s, %s, %s, %s)", $unit_complex, $unit_bed_count, 
+            $unit_bath_count, $unit_size, $unit_price, $unit_date_available, 
+            $unit_lease_length, $unit_deposit, $unit_app_fee, $unit_pet_allowed, 
+            $unit_pet_req, $unit_laundry, $unit_sec_8, $unit_hud_voucher, 
+            $unit_usda, $unit_low_income);
+
+    echo "bam string";
+    if (mysqli_query($conn, $query_string)) {
+        header("location: LandlordPage.php");
+    } else {
+        echo "Error: " . $query_string . "<br>" . mysqli_error($conn);
+    }
+    mysqli_close($conn);
+}
+?>
 
 </html>
 
