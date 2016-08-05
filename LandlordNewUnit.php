@@ -68,16 +68,34 @@ include('LandlordSession.php');
                         <li>
                             <input type="text" name="deposit" placeholder="Deposit Amount" />
                             <input type="text" name="app_fee" placeholder="App Fee" />
-                            Pets Allowed: <input type="checkbox" name="pet_allowed"  value="0"/>
+                            Pets Allowed: <select name="Pets_Allowed">
+                                <option value ="Yes">Yes</option>
+                                <option value ="No">No</option>
+                            </select>
                             
                         </li>
                         <li>
                             <input type="text" name="pet_req" placeholder="Pet Requirments"/>
-                            Laundry: <input type="checkbox" name="laundry"  value="0"/>
-                            Section 8: <input type="checkbox" name="sec_8"  value="0"/>
-                            HUD Voucher: <input type="checkbox" name="hud_voucher"  value="0"/>
-                            USDA <input type="checkbox" name="usda"  value="0"/>
-                            Low Income: <input type="checkbox" name="low_income"  value="0"/>
+                            Laundry: <select name="Laundry">
+                                <option value ="Yes">Yes</option>
+                                <option value ="No">No</option>
+                            </select>
+                            Section 8: <select name="Section_8">
+                                <option value ="Yes">Yes</option>
+                                <option value ="No">No</option>
+                            </select>
+                            HUD Voucher: <select name="HUD_VOUCH">
+                                <option value ="Yes">Yes</option>
+                                <option value ="No">No</option>
+                            </select>
+                            USDA: <<select name="USDA">
+                                <option value ="Yes">Yes</option>
+                                <option value ="No">No</option>
+                            </select>
+                            Low Income: <select name="Low_Income">
+                                <option value ="Yes">Yes</option>
+                                <option value ="No">No</option>
+                            </select>
                                    
                             
                             
