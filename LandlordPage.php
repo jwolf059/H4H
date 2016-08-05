@@ -92,6 +92,7 @@ Use the php tags and an echo call before hand to access the variables.
                                     <td> <?php echo $current_unit["DATE_AVL"]; ?> </td>
                                     <td> <?php echo $current_unit["LEASE_TYPE"]; ?> </td>
                                     <td> <?php echo $current_unit["DEPOSITE"]; ?> </td>
+                                
                                     <td> Add Link </td>
                                 </tr>
 
@@ -114,6 +115,8 @@ Use the php tags and an echo call before hand to access the variables.
                         Zip: <?php echo $current_zip; ?> <br>
                         Complex Description: <?php echo $current_description; ?> <br>
                         <input type="submit" name ="submit" value="Edit Account Information" />
+                        
+                        <img src = "<?php echo $current_IMG_ONE; ?>" >
                     </div>
                 </div>
             </div>

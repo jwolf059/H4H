@@ -26,6 +26,7 @@ $current_street = $row['STREET_ADDRESS'];
 $current_city = $row['CITY'];
 $current_zip = $row['ZIP'];
 $current_description = $row['DESCRIPTION'];
+$current_IMG_ONE = $row['IMG_ONE'];
 
 if (!isset($current_email)) {
     mysqli_close($conn); // Closing Connection
