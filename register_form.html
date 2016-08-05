@@ -46,7 +46,7 @@
         <div id = "content">
             <div>         
                 <h1 align="center"> Housing4Health Registration </h1>
-                <form action="register_verify.php" method="POST" >
+                <form action="register_verify.php" method="POST" enctype ="multipart/form-data" >
                     <ul style="list-style-type: none">
                         <li>
                             <input type="text" name="complex_name"  placeholder="Complex Name" />
@@ -64,6 +64,10 @@
                             <input type="text" name="password" placeholder="Password" />
                         </li>
                         <li>
+                            <input type ="file" name ="Image_One" accept ="Images/*">
+                            <input type ="file" name ="Image_Two" accept ="Images/*">
+                        </li> 
+                        <li>
                             <input type="submit" value="Register"/>
                         </li>
 
@@ -71,26 +75,26 @@
 
                 </form></div>
         </div>
-                        <div id="footer">
-                <div class="left_footer">
-                    <ul class="footer_list">
-                        <li><a href="./HousingResources.html">Housing Services</a></li>
-                        <li><a href="./HousingSearch.html">Affordable Housing Search</a></li>
-                    </ul>
-                </div>
-                <div class="right_footer">
-                    <ul class="footer_list">
-                        <li><a href="./WhyAffordableHousing.html">Why Affordable Housing?</a></li>
-                        <li><a href="LandlordLiasonProgram.html">Landlord Liason Program</a></li>
-                        <li><a href="OtherCommunityResources"> Community Resources</a></li>
-                    </ul>
-                </div>
+        <div id="footer">
+            <div class="left_footer">
                 <ul class="footer_list">
-                    <li><a href="AffordableHousing.html">What is Sub Housing</a></li>
-                    <li><a href="copyrightpage.html">Copyright</a></li>
-                    <li><a href = "sitemap.html">Sitemap</a></li>
-                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a href="./HousingResources.html">Housing Services</a></li>
+                    <li><a href="./HousingSearch.html">Affordable Housing Search</a></li>
                 </ul>
             </div>
+            <div class="right_footer">
+                <ul class="footer_list">
+                    <li><a href="./WhyAffordableHousing.html">Why Affordable Housing?</a></li>
+                    <li><a href="LandlordLiasonProgram.html">Landlord Liason Program</a></li>
+                    <li><a href="OtherCommunityResources"> Community Resources</a></li>
+                </ul>
+            </div>
+            <ul class="footer_list">
+                <li><a href="AffordableHousing.html">What is Sub Housing</a></li>
+                <li><a href="copyrightpage.html">Copyright</a></li>
+                <li><a href = "sitemap.html">Sitemap</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </div>
     </body>
 </html>
