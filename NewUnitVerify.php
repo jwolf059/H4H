@@ -1,62 +1,76 @@
 
-<!DOCTYPE html>
 
-<html>
+<?php
+session_start();
+$error_message = '';
 
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="Style3.css" media = "screen">
-        <title></title>
-    </head>
+if (isset($_POST['submit']) && (empty($_POST['bed_count']) || empty($_POST['bath_count']) ||
+            empty($_POST['sq_feet']) || empty($_POST['price']) ||
+            empty($_POST['date_available']) || empty($_POST['lease_Length']) ||
+            empty($_POST['deposit']) || empty($_POST['app_fee']))) {
 
-    <?php
+        $error_message = "All text fields required.";
+    
+}
+
+else if (isset($_POST['submit'])) {
+
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "mydb";
+    $database = "mydb";
 
 
 
-    if (isset($complex_name) and isset($complex_email) and
-            isset($phone_number) and isset($street_address) and
-            isset($complex_city) and isset($complex_zip)) {
+    $conn = mysqli_connect($servername, $username, $password);
 
-// Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        function checkInput($input) {
-            $input = stripcslashes($input);
-            $input = mysqli_real_escape_string($conn, $input);
-            return $input;
-        }
-
-        $unit_beds = checkInput($_POST['bed_count']);
-        $unit_bath = checkInput($_POST['bath_count']);
-        $unit_size = checkInput($_POST['sq_feet']);
-        $unit_deposit = checkInput($_POST['deposit']);
-        $unit_free = checkInput($_POST['app_fee']);
-// Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-// Insert new Complex information into table.
-        $sql = "INSERT INTO UNIT (ID, COMPLEX_NAME, COMPLEX_EMAIL, PHONE_NUMBER,
-                STREET_ADDRESS, CITY, ZIP, DESCRIPTION, PASSWORD)
-                VALUES (DEFAULT, '$complex_name', '$complex_email', '$phone_number', '$street_address',"
-                . "'$complex_city', '$complex_zip', 'Default Description', '$complex_password')";
-
-        if ($conn->query($sql) === TRUE) {
-            header("location: LoginPage.php");
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-
-        $conn->close();
+    // If the connection fails, give error.
+    if (!$conn) {
+        die("Connection Failed: " . mysqli_error());
     }
-    ?>
+    
+    function checkInput($input) {
+        $input = stripcslashes($input);
+        $input = mysqli_real_escape_string($conn, $input);
+        return $input;
+    }
+    
+    $unit_pet_req = '';
+    $unit_complex = $_SESSION['complex_name'];
+    $unit_bed_count = checkInput($_POST['bed_count']);
+    $unit_bath_count = checkInput($_POST['bath_count']);
+    $unit_size = checkInput($_POST['sq_feet']);
+    $unit_price = checkInput($_POST['price']);
+    $unit_date_available = checkInput($_POST['date_available']);
+    $unit_lease_length = checkInput($_POST['lease_length']);
+    $unit_deposit = checkInput($_POST['deposit']);
+    $unit_app_fee = checkInput($_POST['app_fee']);
+    $unit_pet_req = checkInput($_POST['pet_req']);
+    
+    
+    
+    
 
+    $selected_db = mysqli_select_db($conn, $database);
 
-</html>
+    $query_string = sprintf("INSERT INTO UNIT (ID, COMPLEX_NAME, NUM_BED, NUM_BATH,
+                SQ_FEET, PRICE, DATE_AVL, LEASE_TYPE, DEPOSITE, APP_FEE, PET_ALLOWED,
+                PET_REQ, LAUNDRY, SEC_8, HUD_VOCH, USDA, LOW_INCOME, UNIT_ID) 
+                VALUES (DEFAULT, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                %s, %s, %s, %s, %s, %s, %s)", $unit_complex, $unit_bed_count,
+            $unit_bath_count, $unit_size, $unit_price, $unit_date_available,
+            $unit_lease_length, $unit_deposit, $unit_app_fee, $_POST['pet_allowed'],
+            $unit_pet_req, $_POST["laundry"], $_POST['sec_8'], $_POST['hud_voucher'],
+            $_POST['usda'], $_POST['low_income']);
+
+    if (mysqli_query($conn, $sql)) {
+    header("location: LandlordPage.php");
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+    mysqli_close($conn);
+}
+?>
 
 
 

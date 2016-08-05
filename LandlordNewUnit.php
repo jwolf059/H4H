@@ -50,7 +50,7 @@ include('LandlordSession.php');
         <div id = "content">
             <div>         
                 <h1 align="center"> Housing4Health New Unit </h1>
-                <form action="NewUnitVerify.php" method="POST" >
+                <form action="" method="POST" >
                     <ul style="list-style-type: none">
                         <li>
                             <input type="text" name="bed_count"  placeholder="No. of Beds" />
@@ -60,6 +60,7 @@ include('LandlordSession.php');
                             <input type="text" name="sq_feet" placeholder="Sq. Feet" />
                             <input type="text" name="price" placeholder="Price" />
                             <input type="date" name="date_available" />
+      
                             <input type="text" name="lease_length" placeholder="Lease Length" />
                         </li>
                         <li>
@@ -72,7 +73,7 @@ include('LandlordSession.php');
                             <input type="text" name="pet_req" placeholder="Pet Requirments"/>
                             Laundry: <input type="checkbox" name="laundry"  />
                             Section 8: <input type="checkbox" name="sec_8"  />
-                            HUD Voucher: <input type="checkbox" name="hud_vocher"  />
+                            HUD Voucher: <input type="checkbox" name="hud_voucher"  />
                             USDA <input type="checkbox" name="usda"  />
                             Low Income: <input type="checkbox" name="pet_allowed"  />
                                    

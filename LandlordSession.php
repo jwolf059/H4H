@@ -19,6 +19,7 @@ $query_for_login = mysqli_query($conn, $query_string);
 $row = mysqli_fetch_assoc($query_for_login);
 
 $current_complex = $row['COMPLEX_NAME'];
+$_SESSION['complex_name'] = $row['COMPLEX_NAME'];
 $current_email = $row['COMPLEX_EMAIL'];
 $current_phone = $row['PHONE_NUMBER'];
 $current_street = $row['STREET_ADDRESS'];
