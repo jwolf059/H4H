@@ -8,16 +8,6 @@
 <?php
 
 session_start();
-$error_message = '';
-
-/*if (isset($_POST['submit']) && (empty($_POST['bed_count']) || empty($_POST['bath_count']) ||
-        empty($_POST['sq_feet']) || empty($_POST['price']) ||
-        empty($_POST['date_available']) || empty($_POST['lease_Length']) ||
-        empty($_POST['deposit']) || empty($_POST['app_fee']))) {
-
-    $error_message = "All text fields required.";
-}
- */
 
 
  if (isset($_POST['submit'])) {

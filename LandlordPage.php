@@ -7,18 +7,6 @@ $unit_query_string = sprintf("SELECT * FROM UNIT WHERE COMPLEX_NAME='%s';", $cur
 $result_for_units = mysqli_query($conn, $unit_query_string);
 ?>
 <!DOCTYPE html>
-<!--
-Accessing the current logged in user variables:
-current_complex
-current_email
-current_phone
-current_street
-current_zip
-current_city
-current_description
-
-Use the php tags and an echo call before hand to access the variables.
--->
 <html>
     <head>
         <meta charset="UTF-8">
