@@ -19,7 +19,7 @@ $error_message = '';
 }
  */
 
-echo "bam first";
+
  if (isset($_POST['submit'])) {
 
     $servername = "localhost";
@@ -36,19 +36,11 @@ echo "bam first";
         die("Connection Failed: " . mysqli_error());
     }
 
-    echo "bam connected";
+   
     function checkInput($input, $conn) {
         $input = stripcslashes($input);
         $input = mysqli_real_escape_string($conn, $input);
         return $input;
-    }
-    
-    function checkCheckbox($box) {
-        $result = false;
-        if (isset($box)) {
-            $result = true;
-        }
-        return $result;
     }
 
     $unit_pet_req = '';
@@ -62,34 +54,33 @@ echo "bam first";
     $unit_lease_length = checkInput($_POST['lease_length'], $conn);
     $unit_deposit = checkInput($_POST['deposit'], $conn);
     $unit_app_fee = checkInput($_POST['app_fee'], $conn);
-    $unit_pet_req = checkInput($_POST['pet_req'], $conn);
+    $unit_pet_req = checkInput($_POST['pet_req'], $conn);   
+    $unit_pet_allowed = $_POST['pet_allowed'];
+    $unit_laundry = $_POST['laundry'];
+    $unit_sec_8 = $_POST['sec_8'];
+    $unit_hud_voucher = $_POST['hud_vouch'];
+    $unit_usda = $_POST['usda'];
+    $unit_low_income = $_POST['low_income'];
+
+
     
-    $unit_pet_allowed = checkCheckbox($_POST['pet_allowed']);
-    $unit_laundry = checkCheckbox($_POST['laundry']);
-    $unit_sec_8 = checkCheckbox($_POST['sec_8']);
-    $unit_hud_voucher = checkCheckbox($_POST['hud_voucher']);
-    $unit_usda = checkCheckbox($_POST['usda']);
-    $unit_low_income = checkCheckbox($_POST['low_income']);
-
-
-    echo "bam checked";
 
 
 
     $selected_db = mysqli_select_db($conn, $database);
 
-    echo "bam selected";
+    
     $query_string = sprintf("INSERT INTO UNIT (idUNIT, COMPLEX_NAME, NUM_BED, NUM_BATH,
-                SQ_FEET, PRICE, DATE_AVL, LEASE_TYPE, DEPOSITE, APP_FEE, PET_ALLOWED,
-                PET_REQ, LAUNDRY, SEC_8, HUD_VOCH, USDA, LOW_INCOME) 
-                VALUES (DEFAULT, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                %s, %s, %s, %s, %s, %s)", $unit_complex, $unit_bed_count, 
+                SQ_FT, PRICE, DATE_AVL, LEASE_TYPE, DEPOSITE, APP_FEE, PET_ALLOWED,
+                PET_REQ, LAUNDRY, SEC_8, HUD_VOCH, USDA, LOW_INCOME, UNIT_ID) 
+                VALUES (DEFAULT, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s',
+                '%s', '%s', '%s', '%s', '%s', '%s', '%s')", $unit_complex, $unit_bed_count, 
             $unit_bath_count, $unit_size, $unit_price, $unit_date_available, 
             $unit_lease_length, $unit_deposit, $unit_app_fee, $unit_pet_allowed, 
             $unit_pet_req, $unit_laundry, $unit_sec_8, $unit_hud_voucher, 
-            $unit_usda, $unit_low_income);
+            $unit_usda, $unit_low_income, $unit_id);
 
-    echo "bam string";
+    
     if (mysqli_query($conn, $query_string)) {
         header("location: LandlordPage.php");
     } else {

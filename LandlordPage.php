@@ -68,6 +68,7 @@ Use the php tags and an echo call before hand to access the variables.
                     <table width="100%" border="0" cellspacing="0" cellpadding="15">
                         <caption>Current Units</caption>
                         <tr>
+                            <th>Unit Number</th>
                             <th>Number of Beds</th>
                             <th>Number of Baths</th>
                             <th>Sq ft</th>
@@ -85,6 +86,7 @@ Use the php tags and an echo call before hand to access the variables.
                             while ($current_unit = mysqli_fetch_assoc($result_for_units)) {
                                 ?>
                                 <tr>
+                                    <td> <?php echo $current_unit["UNIT_ID"]; ?> </td>
                                     <td> <?php echo $current_unit["NUM_BED"]; ?> </td>
                                     <td> <?php echo $current_unit["NUM_BATH"]; ?> </td>
                                     <td> <?php echo $current_unit["SQ_FT"]; ?> </td>
