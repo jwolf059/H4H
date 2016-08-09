@@ -5,6 +5,8 @@ $username = "root";
 $password = "";
 $database = "mydb";
 
+
+
 if (isset($_POST['submit'])) {
     // Connect to Server
     $conn = mysqli_connect($servername, $username, $password);

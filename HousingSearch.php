@@ -169,8 +169,9 @@ and open the template in the editor.
                     if ($result_for_search) {
                         $beds = $_POST['Bedrooms'];
                         $baths = $_POST['Bathrooms'];
-                        $min_price = $_POST['Min_Price'];
-                        $max_price = $_POST['Max_Price'];
+                        $min_price_search = $_POST['Min_Price'];
+                        $max_price_search = $_POST['Max_Price'];
+                        
 
 
                         while ($complex = mysqli_fetch_assoc($result_for_search)) {
@@ -178,7 +179,7 @@ and open the template in the editor.
 
                             $query_string = "SELECT * FROM UNIT WHERE COMPLEX_NAME='$name' "
                                     . "AND NUM_BED >= '$beds' AND NUM_BATH >='$baths' AND "
-                                    . "PRICE >='$min_price' AND PRICE<='$max_price'";
+                                    . "PRICE >='$min_price_search' AND PRICE<='$max_price_search';";
 
 
 
@@ -203,11 +204,11 @@ and open the template in the editor.
                                     $max_price_string = "SELECT MAX(PRICE) FROM UNIT;";
                                     $max_price_query = mysqli_query($conn, $max_price_string);
                                     $max_price = mysqli_fetch_row($max_price_query);
+                                    
+                                    $complex_description = substr($complex["DESCRIPTION"], 0, 200);
+                                    
+                                  
 
-                                    mysqli_free_result($min_bed_query);
-                                    mysqli_free_result($max_bed_query);
-                                    mysqli_free_result($min_price_query);
-                                    mysqli_free_result($max_price_query);
                                     ?>
                                     <div class ="complexResult">
 
@@ -227,6 +228,9 @@ and open the template in the editor.
                                         </div>
                                         <div class ="Price_range">
                                             $<?php echo $min_price[0]; ?> - $<?php echo $max_price[0]; ?>
+                                        </div>
+                                        <div class = "Description">
+                                            <?php echo $complex_description; ?>
                                         </div>
 
                                     </div>        
@@ -282,11 +286,8 @@ and open the template in the editor.
                                     $max_price_query = mysqli_query($conn, $max_price_string);
                                     $max_price = mysqli_fetch_row($max_price_query);
 
-                                    mysqli_free_result($min_bed_query);
-                                    mysqli_free_result($max_bed_query);
-                                    mysqli_free_result($min_price_query);
-                                    mysqli_free_result($max_price_query);
-                                    mysqli_free_result($display_all_result);
+                                    $complex_description = substr($complex["DESCRIPTION"], 0, 200);
+                                     
                                     ?>
                                     <div class ="complexResult">
 
@@ -306,6 +307,9 @@ and open the template in the editor.
                                         </div>
                                         <div class ="Price_range">
                                             $<?php echo $min_price[0]; ?> - $<?php echo $max_price[0]; ?>
+                                        </div>
+                                        <div class = "Description">
+                                            <?php echo $complex_description; ?>
                                         </div>
 
                                     </div>        
