@@ -113,7 +113,7 @@ and open the template in the editor.
                         <option value ="1950">$1950</option>
                         <option value ="2000">$2000</option>
                     </select>
-                    Max Price: <select name = "Max_Price">
+                    Max Price: <select name = "Max_Price" >
                         <option value ="0">$0</option>
                         <option value ="50">$50</option>
                         <option value ="100">$100</option>
@@ -152,7 +152,7 @@ and open the template in the editor.
                         <option value ="1850">$1850</option>
                         <option value ="1900">$1900</option>
                         <option value ="1950">$1950</option>
-                        <option value ="2000">$2000</option>
+                        <option value ="2000" selected="selected">$2000</option>
                     </select>
                     Laundry <input type ="checkbox" name ="Laundry">
                     Pets Allowed <input type ="checkbox" name="Pets">
@@ -187,6 +187,23 @@ and open the template in the editor.
                                 if ($complex_query_result) {
                                     $rows = mysqli_num_rows($complex_query_result);
                                     if ($rows > 0) {
+                                        
+                                        $min_bed_string = "SELECT MIN(NUM_BED) FROM UNIT;";
+                                        $min_bed_query = mysqli_query($conn, $min_bed_string);
+                                        $min_bed = mysqli_fetch_row($min_bed_query);
+                                        
+                                        $max_bed_string = "SELECT MAX(NUM_BED) FROM UNIT;";
+                                        $max_bed_query = mysqli_query($conn, $max_bed_string);
+                                        $max_bed = mysqli_fetch_row($max_bed_query);
+                                        
+                                        $min_price_string = "SELECT MIN(PRICE) FROM UNIT;";
+                                        $min_price_query = mysqli_query($conn, $min_price_string);
+                                        $min_price = mysqli_fetch_row($min_price_query);
+                                        
+                                        $max_price_string = "SELECT MAX(PRICE) FROM UNIT;";
+                                        $max_price_query = mysqli_query($conn, $max_price_string);
+                                        $max_price = mysqli_fetch_row($max_price_query);
+                                        
                                     ?>
                                 <div class ="complexResult">
                                     
@@ -201,10 +218,11 @@ and open the template in the editor.
                                         <?php echo $complex["PHONE_NUMBER"]; ?>
                                    </div>
                                     <div class ="bed_range">
-                                        1 - 5 beds
+                                        <?php echo $min_bed[0]; ?> - <?php echo $max_bed[0]; ?>
+                                        
                                     </div>
                                     <div class ="Price_range">
-                                       $100 to $200
+                                       $<?php echo $min_price[0]; ?> - $<?php echo $max_price[0]; ?>
                                     </div>
                                     
                                 </div>        
