@@ -185,6 +185,8 @@ and open the template in the editor.
                                 $query_string = "SELECT * FROM UNIT WHERE COMPLEX_NAME='$name' "
                                         . "AND NUM_BED='$beds' AND NUM_BATH='$baths' AND "
                                         . "PRICE >='$min_price' AND PRICE<='$max_price'";
+                                
+                               
 
                                 $complex_query_result = mysqli_query($conn, $query_string);
                                        
@@ -222,7 +224,7 @@ and open the template in the editor.
                 <div class="left_footer">
                     <ul class="footer_list">
                         <li><a href="./HousingResources.html">Housing Services</a></li>
-                        <li><a href="./HousingSearch.html">Affordable Housing Search</a></li>
+                        <li><a href="./HousingSearch.php">Affordable Housing Search</a></li>
                     </ul>
                 </div>
                 <div class="right_footer">
