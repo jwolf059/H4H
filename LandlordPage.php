@@ -17,38 +17,39 @@ $result_for_units = mysqli_query($conn, $unit_query_string);
 
     <body>
         <div id ="wrapper">
-            <div id="logo-wrap">
-                <img id = logoImg src ="./img/Header.png" alt ="theimage">
+            <div class ="header">
+                <div id="logo-wrap">
+                    <img id = logoImg src ="./img/Header.png" alt ="theimage">
+                </div>
+
+                <div id="menu_wrap">
+                    <nav>
+                        <ul class="menu">
+                            <li><a class="active" href="./Homepage.html">Home</a></li>
+                            <li><a href="./HousingSearch.html">Affordable Housing Search</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropbtn">Tenant Resources</a>
+                                <div class="dropdown-content">
+                                    <a href="./AffordableHousing.html">What is Affordable housing?</a>
+                                    <a href="./HousingResources.html">Housing Services</a>
+                                    <a href="./AnotherPage.htlm">Something Else really important</a>
+
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropbtn">Landlord Resources</a>
+                                <div class="dropdown-content">
+                                    <a href="./AffordableHousing.html">What is Affordable housing?</a>
+                                    <a href="./WhyAffordableHousing.html">Why affordable housing?</a>
+                                    <a href="./LandlordLiasonProgram.html">Landlord Liason Program</a>
+                                </div>
+                            </li>
+
+                            <li><a class ="login" href="LandlordLogout.php">Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-
-            <div id="menu_wrap">
-                <nav>
-                    <ul class="menu">
-                        <li><a class="active" href="./Homepage.html">Home</a></li>
-                        <li><a href="./HousingSearch.html">Affordable Housing Search</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropbtn">Tenant Resources</a>
-                            <div class="dropdown-content">
-                                <a href="./AffordableHousing.html">What is Affordable housing?</a>
-                                <a href="./HousingResources.html">Housing Services</a>
-                                <a href="./AnotherPage.htlm">Something Else really important</a>
-
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropbtn">Landlord Resources</a>
-                            <div class="dropdown-content">
-                                <a href="./AffordableHousing.html">What is Affordable housing?</a>
-                                <a href="./WhyAffordableHousing.html">Why affordable housing?</a>
-                                <a href="./LandlordLiasonProgram.html">Landlord Liason Program</a>
-                            </div>
-                        </li>
-
-                        <li><a class ="login" href="LandlordLogout.php">Logout</a></li>
-                    </ul>
-                </nav>
-            </div>
-
             <div id = "content">
                 <div id="profile">
                     <b id="welcome">Welcome : <i><?php echo $current_complex; ?></i></b>
@@ -82,7 +83,7 @@ $result_for_units = mysqli_query($conn, $unit_query_string);
                                     <td> <?php echo $current_unit["DATE_AVL"]; ?> </td>
                                     <td> <?php echo $current_unit["LEASE_TYPE"]; ?> </td>
                                     <td> <?php echo $current_unit["DEPOSITE"]; ?> </td>
-                                
+
                                     <td> Add Link </td>
                                 </tr>
 
@@ -105,7 +106,7 @@ $result_for_units = mysqli_query($conn, $unit_query_string);
                         Zip: <?php echo $current_zip; ?> <br>
                         Complex Description: <?php echo $current_description; ?> <br>
                         <input type="submit" name ="submit" value="Edit Account Information" />
-                        
+
                         <img src = "<?php echo $current_IMG_ONE; ?>" >
                     </div>
                 </div>

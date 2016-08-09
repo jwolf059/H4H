@@ -19,6 +19,7 @@ if(isset($_SESSION['login_user'])) {
     </head>
     <body>        
         <div id ="wrapper">
+            <div class ="header">
             <div id="logo-wrap">
                 <img id = logoImg src ="./img/Header.png" alt ="theimage">
             </div>
@@ -50,7 +51,7 @@ if(isset($_SESSION['login_user'])) {
                     </ul>
                 </nav>
             </div>
-            
+            </div>
             
             
             <div class ="content">
