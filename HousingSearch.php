@@ -17,6 +17,7 @@ and open the template in the editor.
     </head>
     <body>
         <div id ="wrapper">
+            <div class ="header">
             <div id="logo-wrap">
                 <img id = logoImg src ="./img/Header.png" alt ="theimage">
             </div>
@@ -48,9 +49,11 @@ and open the template in the editor.
                     </ul>
                 </nav>
             </div>
+            </div>
             <div id = "content">
-                <h2> Housing Search </h2> 
-                <form action="" method="POST">
+                <div class ="filter">
+                <form class ="filter-control" action="" method="POST">
+                    <h4> Filter Results </h4> 
                     Bedrooms: <select name = "Bedrooms">
                         <option value ="0">0</option>
                         <option value ="1">1</option>
@@ -158,17 +161,8 @@ and open the template in the editor.
 
 
                 </form>
-                <div>
-
-                    <table width="100%" border="0" cellspacing="0" cellpadding="15">
-                        <caption>Housing Complex Results</caption>
-                        <tr>
-                            <th>Complex Name</th>
-                            <th>Phone Number</th>
-                            <th>Email</th>
-                            <th>Matched Units</th>
-
-                        </tr>
+                </div>
+                <div class = "results">
 
 
                         <?php
@@ -183,7 +177,7 @@ and open the template in the editor.
                                 $name = $complex['COMPLEX_NAME'];
                                 
                                 $query_string = "SELECT * FROM UNIT WHERE COMPLEX_NAME='$name' "
-                                        . "AND NUM_BED='$beds' AND NUM_BATH='$baths' AND "
+                                        . "AND NUM_BED >= '$beds' AND NUM_BATH >='$baths' AND "
                                         . "PRICE >='$min_price' AND PRICE<='$max_price'";
 
                                 $complex_query_result = mysqli_query($conn, $query_string);
@@ -192,16 +186,28 @@ and open the template in the editor.
                                     $rows = mysqli_num_rows($complex_query_result);
                                     if ($rows > 0) {
                                     ?>
-                                    <tr>
-                                        <td> <?php echo $complex["COMPLEX_NAME"]; ?> </td>
-                                        <td> <?php echo $complex["PHONE_NUMBER"]; ?> </td>
-                                        <td> <?php echo $complex["COMPLEX_EMAIL"]; ?> </td>
-                                        <td> <?php echo $rows; ?> </td>
-
-
-
-                                    </tr>
-
+                                <div class ="complexResult">
+                                    
+                                    <div class ="Image">
+                                        <img src = "<?php echo $complex["IMG_ONE"]; ?>">
+                                    </div>
+                   
+                                   <div class ="name">
+                                        <?php echo $complex["COMPLEX_NAME"]; ?>
+                                   </div>
+                                   <div class ="phoneNumber">
+                                        <?php echo $complex["PHONE_NUMBER"]; ?>
+                                   </div>
+                                    <div class ="bed_range">
+                                        1 - 5 beds
+                                    </div>
+                                    <div class ="Price_range">
+                                       $100 to $200
+                                    </div>
+                                    
+                                </div>        
+                                    
+                                    
                                     <?php
                                     }
                                     
@@ -211,8 +217,6 @@ and open the template in the editor.
                         }
 
                         ?>
-
-                    </table>
                 </div>
             </div>
 
