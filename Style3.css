@@ -240,7 +240,7 @@ h4 {
 
 .complexResult {
   display: block;
-  text-align: center;
+  text-align: initial;
   width: auto; /* THIS */
   height: 200px;
   padding: 2px 2px;
@@ -249,20 +249,23 @@ h4 {
   color: #333; /* THIS */
   background-image: none;
   border: 8px solid #333; /* THIS */
+  overflow: hidden;
   }
 
 
 .Image img {
     position: absolute;
-    text-align: center;
+    margin: auto;
+
     max-width: 200px;
     max-height: 200px;
+    
 }
 
 .Image {
     position: absolute;
-    max-width: 10px;
-    max-height: 10px;
+   
+    
 }
 
 #wrapper {
@@ -272,4 +275,31 @@ h4 {
 .header {
     min-height: 100%;
     position: relative;
+}
+
+.name {
+    text-align: left;
+    font-size: 36px;
+    color: darkblue;
+    text-decoration: underline;
+    margin-left: 18%;
+    margin-bottom: 2%;
+}
+
+.phoneNumber {
+    text-align: left;
+    font-size: 22px;
+    margin-left: 18%;
+}
+
+.bed_range {
+    text-align: left;
+    font-size: 22px;
+    margin-left: 18%;
+}
+
+.Price_range {
+    text-align: left;
+    font-size: 22px;
+    margin-left: 18%;
 }

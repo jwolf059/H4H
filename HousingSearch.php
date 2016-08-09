@@ -171,37 +171,36 @@ and open the template in the editor.
                         $baths = $_POST['Bathrooms'];
                         $min_price_search = $_POST['Min_Price'];
                         $max_price_search = $_POST['Max_Price'];
-                        
 
 
                         while ($complex = mysqli_fetch_assoc($result_for_search)) {
                             $name = $complex['COMPLEX_NAME'];
 
-                            $query_string = "SELECT * FROM UNIT WHERE COMPLEX_NAME='$name' "
+                            $inital_query_string = "SELECT * FROM UNIT WHERE COMPLEX_NAME='$name' "
                                     . "AND NUM_BED >= '$beds' AND NUM_BATH >='$baths' AND "
-                                    . "PRICE >='$min_price_search' AND PRICE<='$max_price_search';";
+                                    . "PRICE >='$min_price_search' AND PRICE<='$max_price_search'";
 
 
 
-                            $complex_query_result = mysqli_query($conn, $query_string);
+                            $complex_query_result = mysqli_query($conn, $inital_query_string);
 
                             if ($complex_query_result) {
                                 $rows = mysqli_num_rows($complex_query_result);
                                 if ($rows > 0) {
 
-                                    $min_bed_string = "SELECT MIN(NUM_BED) FROM UNIT;";
+                                    $min_bed_string = "SELECT MIN(NUM_BED) FROM UNIT WHERE COMPLEX_NAME='$name';";
                                     $min_bed_query = mysqli_query($conn, $min_bed_string);
                                     $min_bed = mysqli_fetch_row($min_bed_query);
 
-                                    $max_bed_string = "SELECT MAX(NUM_BED) FROM UNIT;";
+                                    $max_bed_string = "SELECT MAX(NUM_BED) FROM UNIT WHERE COMPLEX_NAME='$name';";
                                     $max_bed_query = mysqli_query($conn, $max_bed_string);
                                     $max_bed = mysqli_fetch_row($max_bed_query);
 
-                                    $min_price_string = "SELECT MIN(PRICE) FROM UNIT;";
+                                    $min_price_string = "SELECT MIN(PRICE) FROM UNIT WHERE COMPLEX_NAME='$name';";
                                     $min_price_query = mysqli_query($conn, $min_price_string);
                                     $min_price = mysqli_fetch_row($min_price_query);
 
-                                    $max_price_string = "SELECT MAX(PRICE) FROM UNIT;";
+                                    $max_price_string = "SELECT MAX(PRICE) FROM UNIT WHERE COMPLEX_NAME='$name';";
                                     $max_price_query = mysqli_query($conn, $max_price_string);
                                     $max_price = mysqli_fetch_row($max_price_query);
                                     
@@ -220,19 +219,20 @@ and open the template in the editor.
                                             <?php echo $complex["COMPLEX_NAME"]; ?>
                                         </div>
                                         <div class ="phoneNumber">
-                                            <?php echo $complex["PHONE_NUMBER"]; ?>
+                                           Phone Number: <?php echo $complex["PHONE_NUMBER"]; ?>
                                         </div>
                                         <div class ="bed_range">
-                                            <?php echo $min_bed[0]; ?> - <?php echo $max_bed[0]; ?>
+                                            Unit Size: <?php echo $min_bed[0]; ?> - <?php echo $max_bed[0]; ?> bedrooms
 
                                         </div>
                                         <div class ="Price_range">
-                                            $<?php echo $min_price[0]; ?> - $<?php echo $max_price[0]; ?>
+                                           Unit Price Range: $<?php echo $min_price[0]; ?> - $<?php echo $max_price[0]; ?>
                                         </div>
+
                                         <div class = "Description">
                                             <?php echo $complex_description; ?>
                                         </div>
-
+                                        
                                     </div>        
 
 
@@ -270,43 +270,43 @@ and open the template in the editor.
                                 $rows = mysqli_num_rows($complex_query_result);
                                 if ($rows > 0) {
 
-                                    $min_bed_string = "SELECT MIN(NUM_BED) FROM UNIT;";
+                                    $min_bed_string = "SELECT MIN(NUM_BED) FROM UNIT WHERE COMPLEX_NAME='$name';";
                                     $min_bed_query = mysqli_query($conn, $min_bed_string);
                                     $min_bed = mysqli_fetch_row($min_bed_query);
 
-                                    $max_bed_string = "SELECT MAX(NUM_BED) FROM UNIT;";
+                                    $max_bed_string = "SELECT MAX(NUM_BED) FROM UNIT WHERE COMPLEX_NAME='$name';";
                                     $max_bed_query = mysqli_query($conn, $max_bed_string);
                                     $max_bed = mysqli_fetch_row($max_bed_query);
 
-                                    $min_price_string = "SELECT MIN(PRICE) FROM UNIT;";
+                                    $min_price_string = "SELECT MIN(PRICE) FROM UNIT WHERE COMPLEX_NAME='$name';";
                                     $min_price_query = mysqli_query($conn, $min_price_string);
                                     $min_price = mysqli_fetch_row($min_price_query);
 
-                                    $max_price_string = "SELECT MAX(PRICE) FROM UNIT;";
+                                    $max_price_string = "SELECT MAX(PRICE) FROM UNIT WHERE COMPLEX_NAME='$name';";
                                     $max_price_query = mysqli_query($conn, $max_price_string);
                                     $max_price = mysqli_fetch_row($max_price_query);
-
+                                    
                                     $complex_description = substr($complex["DESCRIPTION"], 0, 200);
-                                     
+
                                     ?>
                                     <div class ="complexResult">
 
-                                        <div class ="Image">
+                                  <div class ="Image">
                                             <img src = "<?php echo $complex["IMG_ONE"]; ?>">
                                         </div>
 
                                         <div class ="name">
-                                             <?php echo $complex["COMPLEX_NAME"]; ?>
+                                            <?php echo $complex["COMPLEX_NAME"]; ?>
                                         </div>
                                         <div class ="phoneNumber">
-                                            <?php echo $complex["PHONE_NUMBER"]; ?>
+                                           Phone Number: <?php echo $complex["PHONE_NUMBER"]; ?>
                                         </div>
                                         <div class ="bed_range">
-                                            <?php echo $min_bed[0]; ?> - <?php echo $max_bed[0]; ?>
+                                            Unit Size: <?php echo $min_bed[0]; ?> - <?php echo $max_bed[0]; ?> Bedrooms
 
                                         </div>
                                         <div class ="Price_range">
-                                            $<?php echo $min_price[0]; ?> - $<?php echo $max_price[0]; ?>
+                                           Unit Price Range: $<?php echo $min_price[0]; ?> - $<?php echo $max_price[0]; ?>
                                         </div>
                                         <div class = "Description">
                                             <?php echo $complex_description; ?>
