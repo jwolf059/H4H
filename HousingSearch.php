@@ -169,20 +169,20 @@ and open the template in the editor.
                     if ($result_for_search) {
                         $beds = $_POST['Bedrooms'];
                         $baths = $_POST['Bathrooms'];
-                        $min_price = $_POST['Min_Price'];
-                        $max_price = $_POST['Max_Price'];
+                        $min_price_search = $_POST['Min_Price'];
+                        $max_price_search = $_POST['Max_Price'];
 
 
                         while ($complex = mysqli_fetch_assoc($result_for_search)) {
                             $name = $complex['COMPLEX_NAME'];
 
-                            $query_string = "SELECT * FROM UNIT WHERE COMPLEX_NAME='$name' "
+                            $inital_query_string = "SELECT * FROM UNIT WHERE COMPLEX_NAME='$name' "
                                     . "AND NUM_BED >= '$beds' AND NUM_BATH >='$baths' AND "
-                                    . "PRICE >='$min_price' AND PRICE<='$max_price'";
+                                    . "PRICE >='$min_price_search' AND PRICE<='$max_price_search'";
 
 
 
-                            $complex_query_result = mysqli_query($conn, $query_string);
+                            $complex_query_result = mysqli_query($conn, $inital_query_string);
 
                             if ($complex_query_result) {
                                 $rows = mysqli_num_rows($complex_query_result);
