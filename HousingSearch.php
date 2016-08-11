@@ -26,7 +26,7 @@ and open the template in the editor.
                     <nav>
                         <ul class="menu">
                             <li><a class="active" href="./Homepage.html">Home</a></li>
-                            <li><a href="./HousingSearch.html">Affordable Housing Search</a></li>
+                            <li><a href="./HousingSearch.php">Affordable Housing Search</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropbtn">Tenant Resources</a>
                                 <div class="dropdown-content">
@@ -203,116 +203,118 @@ and open the template in the editor.
                                     $max_price_string = "SELECT MAX(PRICE) FROM UNIT WHERE COMPLEX_NAME='$name';";
                                     $max_price_query = mysqli_query($conn, $max_price_string);
                                     $max_price = mysqli_fetch_row($max_price_query);
-                                    
-                                    $complex_description = substr($complex["DESCRIPTION"], 0, 200);
-                                    
-                                  
 
+                                    $complex_description = substr($complex["DESCRIPTION"], 0, 200);
                                     ?>
                                     <div class ="complexResult">
+                                        <section class ="details">
+                                            <div class ="Image">
+                                                <img src = "<?php echo $complex["IMG_ONE"]; ?>">
+                                            </div>
 
-                                        <div class ="Image">
-                                            <img src = "<?php echo $complex["IMG_ONE"]; ?>">
-                                        </div>
+                                            <div class ="name">
+                                              <?php echo $complex["COMPLEX_NAME"]; ?>
+                                            </div>
+                                            <div class ="phoneNumber">
+                                                Phone Number: <?php echo $complex["PHONE_NUMBER"]; ?>
+                                            </div>
+                                            <div class ="bed_range">
+                                                Unit Size: <?php echo $min_bed[0]; ?> - <?php echo $max_bed[0]; ?> bedrooms
 
-                                        <div class ="name">
-                                            <?php echo $complex["COMPLEX_NAME"]; ?>
-                                        </div>
-                                        <div class ="phoneNumber">
-                                           Phone Number: <?php echo $complex["PHONE_NUMBER"]; ?>
-                                        </div>
-                                        <div class ="bed_range">
-                                            Unit Size: <?php echo $min_bed[0]; ?> - <?php echo $max_bed[0]; ?> bedrooms
-
-                                        </div>
-                                        <div class ="Price_range">
-                                           Unit Price Range: $<?php echo $min_price[0]; ?> - $<?php echo $max_price[0]; ?>
-                                        </div>
-
-                                        <div class = "Description">
-                                            <?php echo $complex_description; ?>
-                                        </div>
+                                            </div>
+                                            <div class ="Price_range">
+                                                Unit Price Range: $<?php echo $min_price[0]; ?> - $<?php echo $max_price[0]; ?>
+                                            </div>
+                                        </section>
                                         
-                                    </div>        
-
-
-                                    <?php
-                                }
-                            }
-                        }
-                        mysqli_close($conn);
-                        
-                    } else {
-
-                        $conn = mysqli_connect($servername, $username, $password);
-
-                        // Test connection.
-                        if (!$conn) {
-                            die("Connection Failed: " . mysqli_error());
-                        }
-
-                        // Select database
-                        $selected_db = mysqli_select_db($conn, $database);
-
-                        $display_all_string = "SELECT * FROM USER";
-                        $display_all_result = mysqli_query($conn, $display_all_string);
-
-
-                        while ($complex = mysqli_fetch_assoc($display_all_result)) {
-                            $name = $complex['COMPLEX_NAME'];
-
-                            $query_string = "SELECT * FROM UNIT WHERE COMPLEX_NAME='$name' "
-                                    . "AND NUM_BED >= '1'";
-
-                            $complex_query_result = mysqli_query($conn, $query_string);
-
-                            if ($complex_query_result) {
-                                $rows = mysqli_num_rows($complex_query_result);
-                                if ($rows > 0) {
-
-                                    $min_bed_string = "SELECT MIN(NUM_BED) FROM UNIT WHERE COMPLEX_NAME='$name';";
-                                    $min_bed_query = mysqli_query($conn, $min_bed_string);
-                                    $min_bed = mysqli_fetch_row($min_bed_query);
-
-                                    $max_bed_string = "SELECT MAX(NUM_BED) FROM UNIT WHERE COMPLEX_NAME='$name';";
-                                    $max_bed_query = mysqli_query($conn, $max_bed_string);
-                                    $max_bed = mysqli_fetch_row($max_bed_query);
-
-                                    $min_price_string = "SELECT MIN(PRICE) FROM UNIT WHERE COMPLEX_NAME='$name';";
-                                    $min_price_query = mysqli_query($conn, $min_price_string);
-                                    $min_price = mysqli_fetch_row($min_price_query);
-
-                                    $max_price_string = "SELECT MAX(PRICE) FROM UNIT WHERE COMPLEX_NAME='$name';";
-                                    $max_price_query = mysqli_query($conn, $max_price_string);
-                                    $max_price = mysqli_fetch_row($max_price_query);
-                                    
-                                    $complex_description = substr($complex["DESCRIPTION"], 0, 200);
-
-                                    ?>
-                                    <div class ="complexResult">
-
-                                  <div class ="Image">
-                                            <img src = "<?php echo $complex["IMG_ONE"]; ?>">
-                                        </div>
-
-                                        <div class ="name">
-                                            <?php echo $complex["COMPLEX_NAME"]; ?>
-                                        </div>
-                                        <div class ="phoneNumber">
-                                           Phone Number: <?php echo $complex["PHONE_NUMBER"]; ?>
-                                        </div>
-                                        <div class ="bed_range">
-                                            Unit Size: <?php echo $min_bed[0]; ?> - <?php echo $max_bed[0]; ?> Bedrooms
-
-                                        </div>
-                                        <div class ="Price_range">
-                                           Unit Price Range: $<?php echo $min_price[0]; ?> - $<?php echo $max_price[0]; ?>
-                                        </div>
-                                        <div class = "Description">
-                                            <?php echo $complex_description; ?>
-                                        </div>
+                                        <article class ="description">
+                                            <p class="info">
+                                            Description: <?php echo $complex_description; ?>...
+                                            </p>
+                                        </article>
 
                                     </div>        
+
+
+                <?php
+            }
+        }
+    }
+    mysqli_close($conn);
+} else {
+
+    $conn = mysqli_connect($servername, $username, $password);
+
+    // Test connection.
+    if (!$conn) {
+        die("Connection Failed: " . mysqli_error());
+    }
+
+    // Select database
+    $selected_db = mysqli_select_db($conn, $database);
+
+    $display_all_string = "SELECT * FROM USER";
+    $display_all_result = mysqli_query($conn, $display_all_string);
+
+
+    while ($complex = mysqli_fetch_assoc($display_all_result)) {
+        $name = $complex['COMPLEX_NAME'];
+
+        $query_string = "SELECT * FROM UNIT WHERE COMPLEX_NAME='$name' "
+                . "AND NUM_BED >= '1'";
+
+        $complex_query_result = mysqli_query($conn, $query_string);
+
+        if ($complex_query_result) {
+            $rows = mysqli_num_rows($complex_query_result);
+            if ($rows > 0) {
+
+                $min_bed_string = "SELECT MIN(NUM_BED) FROM UNIT WHERE COMPLEX_NAME='$name';";
+                $min_bed_query = mysqli_query($conn, $min_bed_string);
+                $min_bed = mysqli_fetch_row($min_bed_query);
+
+                $max_bed_string = "SELECT MAX(NUM_BED) FROM UNIT WHERE COMPLEX_NAME='$name';";
+                $max_bed_query = mysqli_query($conn, $max_bed_string);
+                $max_bed = mysqli_fetch_row($max_bed_query);
+
+                $min_price_string = "SELECT MIN(PRICE) FROM UNIT WHERE COMPLEX_NAME='$name';";
+                $min_price_query = mysqli_query($conn, $min_price_string);
+                $min_price = mysqli_fetch_row($min_price_query);
+
+                $max_price_string = "SELECT MAX(PRICE) FROM UNIT WHERE COMPLEX_NAME='$name';";
+                $max_price_query = mysqli_query($conn, $max_price_string);
+                $max_price = mysqli_fetch_row($max_price_query);
+
+                $complex_description = substr($complex["DESCRIPTION"], 0, 200);
+                ?>
+                                        <div class ="complexResult">
+                                        <section class ="details">
+                                            <div class ="Image">
+                                                <img src = "<?php echo $complex["IMG_ONE"]; ?>">
+                                            </div>
+
+                                            <div class ="name">
+                                              <?php echo $complex["COMPLEX_NAME"]; ?>
+                                            </div>
+                                            <div class ="phoneNumber">
+                                                Phone Number: <?php echo $complex["PHONE_NUMBER"]; ?>
+                                            </div>
+                                            <div class ="bed_range">
+                                                Unit Size: <?php echo $min_bed[0]; ?> - <?php echo $max_bed[0]; ?> bedrooms
+
+                                            </div>
+                                            <div class ="Price_range">
+                                                Unit Price Range: $<?php echo $min_price[0]; ?> - $<?php echo $max_price[0]; ?>
+                                            </div>
+                                        </section>
+                                        
+                                        <article class ="description">
+                                            <p>
+                                            Description: <?php echo $complex_description; ?>...
+                                            </p>
+                                        </article>
+
+                                    </div>          
 
 
                 <?php

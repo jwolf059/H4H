@@ -124,7 +124,7 @@ body {
     margin-bottom: 2%;
 }
 
-#content p {
+#content p.home {
     right: 50%;
     font-size: 24px;
     text-align: left;    
@@ -132,6 +132,7 @@ body {
 }
 
 #content {
+    text-align: center;
     position: relative;
     width: auto;
     height: 100%; /*FIX THIS*/
@@ -162,7 +163,6 @@ h3 {
 
 
 .form-control{
-  display: block;
   text-align: center;
   width: 50%; /* THIS */
   height: auto;
@@ -179,9 +179,10 @@ h3 {
 .form_box {
     margin-left: 40%;
     margin-right: 20%;
-    margin-bottom: 4%;
-    margin-top: 4%;
+    margin-top: 2%;
     border-color: black;
+    width: 600px;
+    height: 450px;
 }
 
 table, th, td{
@@ -224,12 +225,14 @@ account_info {
 
 #content {
     display: block;
-
+    width: 100%;
+    min-height: 500px; /*may not need this*/
 }
 
 h4 {
     padding: 0%;
     margin: 0;
+    text-decoration: underline;
 }
 
 .results {
@@ -239,9 +242,8 @@ h4 {
 }
 
 .complexResult {
-  display: block;
-  text-align: initial;
-  width: auto; /* THIS */
+  display: inline-block;
+  width: 100%; /* THIS */
   height: 200px;
   padding: 2px 2px;
   font-size: 22px;
@@ -249,7 +251,6 @@ h4 {
   color: #333; /* THIS */
   background-image: none;
   border: 8px solid #333; /* THIS */
-  overflow: hidden;
   }
 
 
@@ -282,24 +283,92 @@ h4 {
     font-size: 36px;
     color: darkblue;
     text-decoration: underline;
-    margin-left: 18%;
+    margin-left: 50%;
     margin-bottom: 2%;
 }
 
 .phoneNumber {
     text-align: left;
     font-size: 22px;
-    margin-left: 18%;
+    margin-left: 50%;
 }
 
 .bed_range {
     text-align: left;
     font-size: 22px;
-    margin-left: 18%;
+    margin-left: 50%;
 }
 
 .Price_range {
     text-align: left;
     font-size: 22px;
-    margin-left: 18%;
+    margin-left: 50%;
+}
+
+.details {
+    float: left;
+}
+
+p.info {
+    text-align: left;
+    width: 575px;
+    height: auto;
+    
+}
+
+.description {
+    float: right;
+    width: 750px;
+    height: 200px;
+    text-align: left;
+    margin-right: 70px;
+    
+}
+
+p.statement {
+    width: 99%;
+    text-align: center;
+}
+
+.register {
+    font-size: 14px;
+}
+
+.reg_form {
+  display: block;
+  width: auto; /* THIS */
+  height: auto;
+  padding: 6px 12px;
+  color: #333; /* THIS */
+  background-color: #ccc;
+  background-image: none;
+  border: 8px solid #333; /* THIS */
+  border-radius: 4px; /* THIS */
+}
+
+.reg_form_box {
+    display: block;
+    margin-left: 30%;
+    margin-top: 2%;
+    border-color: black;
+    width: 700px;
+    height: 300px;
+}
+
+.reg {
+    float: right;
+    margin-left: 60px;
+   
+}
+
+p.word {
+    width: 600px;
+    display: block;
+    font-size: 22px;
+
+}
+
+.file {
+   float: right;
+    margin-left: 100px;
 }

@@ -12,68 +12,56 @@
     <body>
         <div id ="wrapper">
             <div class ="header">
-            <div id="logo-wrap">
-                <img id = logoImg src ="./img/Header.png" alt ="theimage">
+                <div id="logo-wrap">
+                    <img id = logoImg src ="./img/Header.png" alt ="theimage">
+                </div>
+
+                <div id="menu_wrap">
+                    <nav>
+                        <ul class="menu">
+                            <li><a class="active" href="./Homepage.html">Home</a></li>
+                            <li><a href="./HousingSearch.html">Affordable Housing Search</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropbtn">Tenant Resources</a>
+                                <div class="dropdown-content">
+                                    <a href="./AffordableHousing.html">What is Affordable housing?</a>
+                                    <a href="./HousingResources.html">Housing Services</a>
+                                    <a href="./AnotherPage.htlm">Something Else really important</a>
+
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropbtn">Landlord Resources</a>
+                                <div class="dropdown-content">
+                                    <a href="./AffordableHousing.html">What is Affordable housing?</a>
+                                    <a href="./WhyAffordableHousing.html">Why affordable housing?</a>
+                                    <a href="./LandlordLiasonProgram.html">Landlord Liason Program</a>
+                                </div>
+                            </li>
+
+                            <li><a class ="login" href="user_login.html">Login</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-
-            <div id="menu_wrap">
-                <nav>
-                    <ul class="menu">
-                        <li><a class="active" href="./Homepage.html">Home</a></li>
-                        <li><a href="./HousingSearch.html">Affordable Housing Search</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropbtn">Tenant Resources</a>
-                            <div class="dropdown-content">
-                                <a href="./AffordableHousing.html">What is Affordable housing?</a>
-                                <a href="./HousingResources.html">Housing Services</a>
-                                <a href="./AnotherPage.htlm">Something Else really important</a>
-
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropbtn">Landlord Resources</a>
-                            <div class="dropdown-content">
-                                <a href="./AffordableHousing.html">What is Affordable housing?</a>
-                                <a href="./WhyAffordableHousing.html">Why affordable housing?</a>
-                                <a href="./LandlordLiasonProgram.html">Landlord Liason Program</a>
-                            </div>
-                        </li>
-
-                        <li><a class ="login" href="user_login.html">Login</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
         </div>
         <div id = "content">
-            <div>         
-                <h1 align="center"> Housing4Health Registration </h1>
-                <form action="register_verify.php" method="POST" enctype ="multipart/form-data" >
-                    <ul style="list-style-type: none">
-                        <li>
-                            <input type="text" name="complex_name"  placeholder="Complex Name" />
-                            <input type="email" name="complex_email" placeholder="Email" />  
-                        </li>
-                        <li>
-                            <input type="text" name="phone_number" placeholder="Phone number" />
-                            <input type="text" name="street_address" placeholder="Street address" />
-                        </li>
-                        <li>
-                            <input type="text" name="complex_city" placeholder="City" />
-                            <input type="text" name="complex_zip" placeholder="zip code" />
-                        </li>
-                        <li>
-                            <input type="text" name="password" placeholder="Password" />
-                        </li>
-                        <li>
-                            <input type ="file" name ="Image_One" accept ="Images/*">
-                            <input type ="file" name ="Image_Two" accept ="Images/*">
-                        </li> 
-                        <li>
-                            <input type="submit" value="Register"/>
-                        </li>
+            <div class ="reg_form_box"> 
 
-                    </ul>
+                <h1 align="center"> Housing4Health Registration </h1>
+                <form class = "reg_form" action="register_verify.php" method="POST" enctype ="multipart/form-data" >
+
+                    <p class="word">Complex Name: <input class ="reg" size ="50" type="text" name="complex_name"  placeholder="Complex Name" /> </p> 
+                    <p class="word">Complex Email: <input class ="reg" size ="50" type="email" name="complex_email" placeholder="Email" /> </p> 
+                    <p class="word">Phone Number: <input class ="reg" size ="50" type="text" name="phone_number" placeholder="Phone number" /> </p> 
+                    <p class="word">Street Address: <input class ="reg" size ="50" type="text" name="street_address" placeholder="Street address" /></p> 
+                    <p class="word">City: <input class ="reg" size ="50" type= "text" name="complex_city" placeholder="City" /> </p> 
+                    <p class="word">Zip code: <input class ="reg" size ="50" type="text" name="complex_zip" placeholder="zip code" /> </p> 
+                    <p class="word">Password: <input class ="reg" size ="50" type="text" name="password" placeholder="Password" />  </p> 
+                    <p class="word">Complex Picture: <input class ="file" type ="file" name ="Image_One" accept ="Images/*"> </p> 
+
+                    <input type="submit" value="Register"/>
+
 
                 </form></div>
         </div>
