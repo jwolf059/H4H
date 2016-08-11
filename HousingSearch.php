@@ -171,6 +171,11 @@ and open the template in the editor.
                         $baths = $_POST['Bathrooms'];
                         $min_price_search = $_POST['Min_Price'];
                         $max_price_search = $_POST['Max_Price'];
+                        
+                        $_SESSION['Bed_Count'] = $beds;
+                        $_SESSION['Bath_Count'] = $baths;
+                        $_SESSION['Min_Price'] = $min_price_search;
+                        $_SESSION['Max_Price'] = $max_price_search;
 
 
                         while ($complex = mysqli_fetch_assoc($result_for_search)) {
@@ -225,12 +230,21 @@ and open the template in the editor.
                                             <div class ="Price_range">
                                                 Unit Price Range: $<?php echo $min_price[0]; ?> - $<?php echo $max_price[0]; ?>
                                             </div>
+                                            
+                                            
+                                            
                                         </section>
                                         
                                         <article class ="description">
                                             <p class="info">
                                             Description: <?php echo $complex_description; ?>...
                                             </p>
+            
+                                            <form method="POST" action="UnitSearch.php" >
+                                                <input type="submit" name="Select" value="<?php echo $complex["COMPLEX_NAME"]; ?>">
+                                            </form>
+                                            
+                                           
                                         </article>
 
                                     </div>        
@@ -312,6 +326,9 @@ and open the template in the editor.
                                             <p>
                                             Description: <?php echo $complex_description; ?>...
                                             </p>
+                                            <form method="POST" action="UnitSearch.php" >
+                                                <input type="submit" name="Select" value="<?php echo $complex["COMPLEX_NAME"]; ?>">
+                                            </form>
                                         </article>
 
                                     </div>          

@@ -257,7 +257,6 @@ h4 {
 .Image img {
     position: absolute;
     margin: auto;
-
     max-width: 200px;
     max-height: 200px;
     
@@ -283,7 +282,7 @@ h4 {
     font-size: 36px;
     color: darkblue;
     text-decoration: underline;
-    margin-left: 50%;
+    margin-left: 80%;
     margin-bottom: 2%;
 }
 
