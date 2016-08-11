@@ -378,3 +378,34 @@ b.welcome {
     text-decoration: underline;
     
 }
+
+.new_unit_form {
+  width: auto; /* THIS */
+  height: auto;
+  padding: 6px 12px;
+  color: #333; /* THIS */
+  background-color: #ccc;
+  background-image: none;
+  border: 8px solid #333; /* THIS */
+  border-radius: 4px; /* THIS */
+}
+
+.Unit_form_box {
+  
+    margin-left: 30%;
+    margin-top: 2%;
+    border-color: black;
+    width: 700px;
+    height: 500px;
+}
+
+.unit {
+    float: right;
+    margin-left: 60px;
+   
+}
+
+.selection {
+   float: right;
+    margin-left: 250px;
+}

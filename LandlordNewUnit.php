@@ -49,90 +49,72 @@ include('LandlordSession.php');
                     </nav>
                 </div>
             </div>
-        </div>
-        <div id = "content">
-            <div>         
-                <h1 align="center"> Housing4Health New Unit </h1>
-                <form action="NewUnitVerify.php" method="POST" >
-                    <ul style="list-style-type: none">
-                        <li>
-                            <input type="text" name="unit_id" placeholder="Unit number" />
-                            <input type="text" name="bed_count"  placeholder="No. of Beds" />
-                            <input type="text" name="bath_count" placeholder="No. of Bath" />  
-                        </li>
-                        <li>
-                            <input type="text" name="sq_feet" placeholder="Sq. Feet" />
-                            <input type="text" name="price" placeholder="Price" />
-                            <input type="date" name="date_available" />
 
-                            <input type="text" name="lease_length" placeholder="Lease Length" />
-                        </li>
-                        <li>
-                            <input type="text" name="deposit" placeholder="Deposit Amount" />
-                            <input type="text" name="app_fee" placeholder="App Fee" />
-                            Pets Allowed: <select name="pet_allowed">
+            <div id = "content">
+                <div class ="Unit_form_box">         
+                    <h1 align="center"> Housing4Health New Unit </h1>
+                    <form class = "new_unit_form" action="NewUnitVerify.php" method="POST" >
+                        <p class="word">Unit Number: <input class ="unit" size ="50" type="text" name="unit_id" placeholder="Unit number" /> </p>
+                        <p class="word">Number of Bedrooms: <input class ="unit" size ="50" type="text" name="bed_count"  placeholder="No. of Beds" /></p>
+                        <p class="word">Number of Bathrooms: <input class ="unit" size ="50" type="text" name="bath_count" placeholder="No. of Bath" />  </p>
+                        <p class="word">Square Footage: <input class ="unit" size ="50" type="text" name="sq_feet" placeholder="Sq. Feet" /></p>
+                        <p class="word">Rent Price: <input class ="unit" size ="50" type="text" name="price" placeholder="Price" /></p>
+                        <p class="word">Lease Length:<input class ="unit" size ="50" type="text" name="lease_length" placeholder="Lease Length" /></p>
+                        <p class="word">Deposit: <input class ="unit" size ="50" type="text" name="deposit" placeholder="Deposit Amount" /></p>
+                        <p class="word">Application Fee:<input class ="unit" size ="50" type="text" name="app_fee" placeholder="App Fee" /></p>
+                        <p class="word">Pets Allowed: <select class ="selection" name="pet_allowed">
                                 <option value ="Yes">Yes</option>
                                 <option value ="No">No</option>
-                            </select>
-
-                        </li>
-                        <li>
-                            <input type="text" name="pet_req" placeholder="Pet Requirments"/>
-                            Laundry: <select name="laundry">
+                            </select></p>
+                        <p class="word">Pet Restrictions: <input class ="unit" size ="50" type="text" name="pet_req" placeholder="Pet Requirments"/></p>
+                        <p class="word">Laundry: <select class ="selection" name="laundry">
                                 <option value ="Yes">Yes</option>
                                 <option value ="No">No</option>
-                            </select>
-                            Section 8: <select name="sec_8">
+                            </select></p>
+                        <p class="word">Section 8: <select class ="selection" name="sec_8">
                                 <option value ="Yes">Yes</option>
                                 <option value ="No">No</option>
-                            </select>
-                            HUD Voucher: <select name="hud_vouch">
+                            </select></p>
+                        <p class="word">HUD Voucher: <select class ="selection" name="hud_vouch">
                                 <option value ="Yes">Yes</option>
                                 <option value ="No">No</option>
-                            </select>
-                            USDA: <select name="usda">
+                            </select></p>
+                        <p class="word">USDA: <select class ="selection" name="usda">
                                 <option value ="Yes">Yes</option>
                                 <option value ="No">No</option>
-                            </select>
-                            Low Income: <select name="low_income">
+                            </select></p>
+                        <p class="word">Low Income: <select class ="selection" name="low_income">
                                 <option value ="Yes">Yes</option>
                                 <option value ="No">No</option>
-                            </select>
+                            </select></p>
+
+                        <input type="submit" name="submit" value="Submit"/>
+                    </form>
+                </div>
 
 
-
-                        </li>
-                        <li>
-
-                            <input type="submit" name="submit" value="Submit"/>
-
-                        </li>
-
+            </div>
+            <div id="footer">
+                <div class="left_footer">
+                    <ul class="footer_list">
+                        <li><a href="./HousingResources.html">Housing Services</a></li>
+                        <li><a href="./HousingSearch.html">Affordable Housing Search</a></li>
                     </ul>
-
-                </form></div>
-
-        </div>
-        <div id="footer">
-            <div class="left_footer">
+                </div>
+                <div class="right_footer">
+                    <ul class="footer_list">
+                        <li><a href="./WhyAffordableHousing.html">Why Affordable Housing?</a></li>
+                        <li><a href="LandlordLiasonProgram.html">Landlord Liason Program</a></li>
+                        <li><a href="OtherCommunityResources"> Community Resources</a></li>
+                    </ul>
+                </div>
                 <ul class="footer_list">
-                    <li><a href="./HousingResources.html">Housing Services</a></li>
-                    <li><a href="./HousingSearch.html">Affordable Housing Search</a></li>
+                    <li><a href="AffordableHousing.html">What is Sub Housing</a></li>
+                    <li><a href="copyrightpage.html">Copyright</a></li>
+                    <li><a href = "sitemap.html">Sitemap</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
                 </ul>
             </div>
-            <div class="right_footer">
-                <ul class="footer_list">
-                    <li><a href="./WhyAffordableHousing.html">Why Affordable Housing?</a></li>
-                    <li><a href="LandlordLiasonProgram.html">Landlord Liason Program</a></li>
-                    <li><a href="OtherCommunityResources"> Community Resources</a></li>
-                </ul>
-            </div>
-            <ul class="footer_list">
-                <li><a href="AffordableHousing.html">What is Sub Housing</a></li>
-                <li><a href="copyrightpage.html">Copyright</a></li>
-                <li><a href = "sitemap.html">Sitemap</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-            </ul>
         </div>
     </body>
 </html>
