@@ -2,7 +2,6 @@
 <?php
 include('LandlordSession.php');
 $unit_query_string = sprintf("SELECT * FROM UNIT WHERE COMPLEX_NAME='%s';", $current_complex);
-//$string = "SELECT * FROM UNIT WHERE COMPLEX_NAME= 'Salmon Run';";
 
 $$unit_result = mysqli_query($conn, $unit_query_string);
 ?>
@@ -83,8 +82,7 @@ $$unit_result = mysqli_query($conn, $unit_query_string);
                                     <td> <?php echo $current_unit["DATE_AVL"]; ?> </td>
                                     <td> <?php echo $current_unit["LEASE_TYPE"]; ?> </td>
                                     <td> <?php echo $current_unit["DEPOSITE"]; ?> </td>
-
-                                    <td> Add Link </td>
+                                    <td> Edit Unit </td>
                                 </tr>
 
                                 <?php
@@ -93,21 +91,31 @@ $$unit_result = mysqli_query($conn, $unit_query_string);
                         ?>
 
                     </table>
+                </div>
+                <div class="lower_box">
                     <form action="LandlordNewUnit.php">
                         <input type="submit" value="Add New Unit" />
                     </form>
-
-                    <div class ="account_info">
-                        <h4>Account Information</h4>
-                        Complex Email: <?php echo $current_email; ?> <br>
-                        Phone Number: <?php echo $current_phone; ?> <br>
-                        Address: <?php echo $current_street; ?> <br>
-                        City: <?php echo $current_city; ?> <br>
-                        Zip: <?php echo $current_zip; ?> <br>
-                        Complex Description: <?php echo $current_description; ?> <br>
-                        <input type="submit" name ="submit" value="Edit Account Information" />
-
+                    <div class ="account_box">
+                        <div class ="account_info">
+                            <h4>Account Information</h4> <br>
+                            <p class ="account">Complex Email: <?php echo $current_email; ?> </p>
+                            <p class ="account">Phone Number: <?php echo $current_phone; ?> </p>
+                            <p class ="account">Address: <?php echo $current_street; ?> </p>
+                            <p class ="account">City: <?php echo $current_city; ?> </p>
+                            <p class ="account">Zip: <?php echo $current_zip; ?> </p>
+                            Complex Description: <?php echo $current_description; ?> <br>
+                            <input type="submit" name ="submit" value="Edit Account Information" />
+                        </div>
+                    </div>  
+                    <div class ="Picture_box">
+                        <form action="uploadPic.php">
                         <img src = "<?php echo $current_IMG_ONE; ?>" >
+                        <div class="pic_upload">
+                        <input type ="file" name ="Image_One" accept ="Images/*"> 
+                        <input type="submit" name ="submit" value="Upload Selected Image" />
+                        </form>
+                        <div>
                     </div>
                 </div>
             </div>

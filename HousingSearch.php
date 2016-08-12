@@ -45,7 +45,7 @@ and open the template in the editor.
                                 </div>
                             </li>
 
-                            <li><a class ="login" href="user_login.html">Login</a></li>
+                            <li><a class ="login" href="user_login.php">Login</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -231,7 +231,7 @@ and open the template in the editor.
                                                 Unit Price Range: $<?php echo $min_price[0]; ?> - $<?php echo $max_price[0]; ?>
                                             </div>
                                             
-                                            <input type ="submit" name = "<?php echo $complex["COMPLEX_NAME"]; ?>" value ="View Detials"> 
+                                    
                                         </section>
                                         
                                         <article class ="description">

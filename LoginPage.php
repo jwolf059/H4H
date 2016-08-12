@@ -46,7 +46,7 @@ if (isset($_SESSION['login_user'])) {
                                 </div>
                             </li>
 
-                            <li><a class ="login" href="user_login.html">Login</a></li>
+                            <li><a class ="login" href="user_login.php">Login</a></li>
                         </ul>
                     </nav>
                 </div>
